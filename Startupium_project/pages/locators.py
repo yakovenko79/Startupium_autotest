@@ -6,7 +6,11 @@ class MainPageLocators():
 
 
 class LoginPageLocators():
-    LOGIN_FORM = (By.CSS_SELECTOR,)
+    REGISTER_NAME = (By.CSS_SELECTOR, "input")
+    REGISTER_EMAIL = (By.CSS_SELECTOR, "#\:r9\:")
+    REGISTER_BUTTON = (By.XPATH, '//*[@id="__next"]/div[2]/main/div/div/div/div/form/button/p')
+    REGISTER_PASSWORD = (By.CSS_SELECTOR,"#\:ra\:")
+    REGISTER_CONFIRM_PASSWORD = (By.CSS_SELECTOR, "#\:rb\:")
 
 
 
