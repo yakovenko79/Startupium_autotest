@@ -1,3 +1,4 @@
+from selenium.common import NoSuchElementException
 from .locators import BasePageLocators
 
 class BasePage():
@@ -11,6 +12,18 @@ class BasePage():
         link.click()
 
     def go_to_register_page(self):
-        self.go_to_login_page()
+        link = self.browser.find_element(*BasePageLocators.CREATE_ACCOUNT_LINK)
+        link.click()
+
+    def open(self):
+        self.browser.get(self.url)
+
+    def is_element_present(self, how, what):
+        try:
+            self.browser.find_element(how, what)
+        except NoSuchElementException:
+            return False
+        return True
+
 
 
