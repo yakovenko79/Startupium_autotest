@@ -9,7 +9,7 @@ class MainPageLocators():
 
 
 class LoginPageLocators():
-    LOGIN_EMAIL = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/div/form/ul/li[1]/div/div/div[2]/div/input')
+    LOGIN_EMAIL = (By.XPATH, '//input[@placeholder="Введите email"]')
     LOGIN_PASSWORD = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/div/form/ul/li[2]/div/div/div[2]/div/input')
     LOGIN_BUTTON = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/div/form/button')
     REGISTER_NAME = (By.CSS_SELECTOR, "input")
