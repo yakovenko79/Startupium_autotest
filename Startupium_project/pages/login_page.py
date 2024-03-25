@@ -32,7 +32,7 @@ class LoginPage(BasePage):
         redirect_to_profile.click()
 
     def should_be_login_email(self):
-        assert self.is_element_present(*LoginPageLocators.REGISTER_EMAIL)
+        assert self.is_element_present(*LoginPageLocators.LOGIN_EMAIL)
 
     def should_be_logged_in(self):
         assert self.is_element_present(*LoginPageLocators.IS_LOGGED_IN)
@@ -47,3 +47,6 @@ class LoginPage(BasePage):
         login_password.send_keys(password)
         login_button = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
         login_button.click()
+
+
+
