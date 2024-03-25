@@ -45,5 +45,6 @@ class ProjectPage(BasePage):
         see_the_project_button = self.browser.find_element(*CreateNewProjectLocators.SEE_THE_PROJECT_BTN)
         see_the_project_button.click()
 
+
     # def is_name_of_project_correct():
     #     assert browser.find_element(*CreateNewProjectLocators, PROJECT_TITLE)
