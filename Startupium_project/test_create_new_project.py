@@ -36,3 +36,4 @@ class TestCreateNewProject:
         project_page.input_project_data(name, description, tag, about, hire)
         project_page.save_to_draft()
         project_page.should_be_project_url()
+
