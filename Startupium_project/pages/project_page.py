@@ -1,5 +1,5 @@
 import time
-
+from Startupium_project.pages.locators import CreateNewProjectLocators
 from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.locators import MainPageLocators, CreateNewProjectLocators
 
@@ -27,11 +27,12 @@ class ProjectPage(BasePage):
         brief_description_field = self.browser.find_element(*CreateNewProjectLocators.BRIEF_DESCRIPTION)
         brief_description_field.send_keys(description)
         tags = self.browser.find_element(*CreateNewProjectLocators.TAGS)
+        self.browser.execute_script("arguments[0].scrollIntoView(true);", tags)
         tags.send_keys(tag)
         tags_confirmation = self.browser.find_element(*CreateNewProjectLocators.TAG_CONFIRM)
         tags_confirmation.click()
         about_project = self.browser.find_element(*CreateNewProjectLocators.ABOUT_PROJECT)
-        # self.browser.execute_script("arguments[0].scrollIntoView(true);", about)
+        self.browser.execute_script("arguments[0].scrollIntoView(true);", about_project)
         about_project.send_keys(about)
         hire_in_crew = self.browser.find_element(*CreateNewProjectLocators.HIRE_TO_PROJECT)
         self.browser.execute_script("arguments[0].scrollIntoView(true);", hire_in_crew)
@@ -45,6 +46,8 @@ class ProjectPage(BasePage):
         see_the_project_button = self.browser.find_element(*CreateNewProjectLocators.SEE_THE_PROJECT_BTN)
         see_the_project_button.click()
 
+    def is_name_of_project_correct(self, name):
+        project_title = self.browser.find_element(*CreateNewProjectLocators.PROJECT_TITLE).text
+        assert project_title == name
 
-    # def is_name_of_project_correct():
-    #     assert browser.find_element(*CreateNewProjectLocators, PROJECT_TITLE)
+

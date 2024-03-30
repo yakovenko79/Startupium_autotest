@@ -36,13 +36,12 @@ class CreateNewProjectLocators():
     SAVE_TO_DRAFT_BTN = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/form/div[2]/button[2]')
     BRIEF_DESCRIPTION = (By.XPATH, "/html/body/div[1]/div[2]/main/div/div/div/form/div[1]/ul/li[3]/div[2]/div/div"
                                    "/textarea[1]")
-    TAGS = (By.XPATH, "/html/body/div[1]/div[2]/main/div/div/div/form/div[1]/ul/li[4]/div/div/div["
-                      "2]/div[2]/div/div/input")
+    TAGS = (By.XPATH, "/html/body/div[1]/div[2]/main/div/div/div/form/div[1]/ul/li[4]/div/div/div[2]/div[2]/div/div/input")
     TAG_CONFIRM = (By.CSS_SELECTOR,"#__next > div.css-1c4mae2 > main > div > div > div > form "
                                                            "> div.MuiBox-root.css-1d5z6v1 > ul > li:nth-child(4) > "
                                                            "div > div > div.MuiBox-root.css-1atepvb > "
                                                            "div.MuiAutocomplete-root.MuiAutocomplete-hasPopupIcon.css"
-                                                           "-chq866 > div > div > div > span > button")
+                                                           "-1g2f1u6 > div > div > div > span")
     ABOUT_PROJECT = (By.CSS_SELECTOR, "#__next > div.css-1c4mae2 > main > div > div > div > form > "
                                                  "div.MuiBox-root.css-1d5z6v1 > ul > li:nth-child(5) > "
                                                  "div.MuiBox-root.css-0 > div > div.ql-container.ql-snow > "
