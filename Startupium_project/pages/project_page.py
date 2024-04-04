@@ -46,8 +46,23 @@ class ProjectPage(BasePage):
         see_the_project_button = self.browser.find_element(*CreateNewProjectLocators.SEE_THE_PROJECT_BTN)
         see_the_project_button.click()
 
+    def publish_project(self):
+        publish_project = self.browser.find_element(*CreateNewProjectLocators.PUBLISH_PROJECT_BTN)
+        self.browser.execute_script("arguments[0].scrollIntoView(true);", publish_project)
+        time.sleep(2)
+        publish_project.click()
+        see_the_project_button = self.browser.find_element(*CreateNewProjectLocators.SEE_THE_PROJECT_BTN)
+        see_the_project_button.click()
+
     def is_name_of_project_correct(self, name):
         project_title = self.browser.find_element(*CreateNewProjectLocators.PROJECT_TITLE).text
         assert project_title == name
+
+    def is_name_of_project_present_on_main_page(self, name):
+        # project_last_card = self.browser.find_element(*CreateNewProjectLocators.LAST_PROJECT_CARD)
+        # self.browser.execute_script("arguments[0].scrollIntoView(true);", project_last_card)
+        project_title = self.browser.find_element(*CreateNewProjectLocators.NAME_PROJECT_CARD).text
+        # self.browser.execute_script("arguments[0].scrollIntoView();", project_title)
+        assert project_title == name, "Takogo proekta net"
 
 

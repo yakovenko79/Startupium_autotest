@@ -34,9 +34,11 @@ class CreateNewProjectLocators():
     CITIES_DROP = (By.ID, ':r9:')
     CITY_NAME = (By.ID, ':r9:-option-5')
     SAVE_TO_DRAFT_BTN = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/form/div[2]/button[2]')
+    PUBLISH_PROJECT_BTN = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/form/div[2]/button[1]')
     BRIEF_DESCRIPTION = (By.XPATH, "/html/body/div[1]/div[2]/main/div/div/div/form/div[1]/ul/li[3]/div[2]/div/div"
                                    "/textarea[1]")
-    TAGS = (By.XPATH, "/html/body/div[1]/div[2]/main/div/div/div/form/div[1]/ul/li[4]/div/div/div[2]/div[2]/div/div/input")
+    TAGS = (By.XPATH, "/html/body/div[1]/div[2]/main/div/div/div/form/div[1]/ul/li[4]/div/div/div[2]/div["
+                      "2]/div/div/input")
     TAG_CONFIRM = (By.CSS_SELECTOR,"#__next > div.css-1c4mae2 > main > div > div > div > form "
                                                            "> div.MuiBox-root.css-1d5z6v1 > ul > li:nth-child(4) > "
                                                            "div > div > div.MuiBox-root.css-1atepvb > "
@@ -52,6 +54,11 @@ class CreateNewProjectLocators():
                                                              "2]/div/div/div/span/button")
     SEE_THE_PROJECT_BTN = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/form/div[2]/div/div/a')
     PROJECT_TITLE = (By.CSS_SELECTOR, 'h2:nth-child(2)')
+    NAME_PROJECT_CARD = (By.XPATH, '/html/body/div[1]/div[2]/main/section[2]/div/div[2]/div/div[1]/a/div/div/div['
+                                   '1]/div/h2')
+    # LAST_PROJECT_CARD = (By.XPATH,'//*[@id="__next"]/div[2]/main/div/div/div[1]/div/div/div[1]/div')
+
+
 
 
 
