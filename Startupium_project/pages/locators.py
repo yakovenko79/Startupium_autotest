@@ -59,6 +59,17 @@ class CreateNewProjectLocators():
     # LAST_PROJECT_CARD = (By.XPATH,'//*[@id="__next"]/div[2]/main/div/div/div[1]/div/div/div[1]/div')
 
 
+class SearchProjectLocators():
+    SEARCH_PROJECT_BTN = (By.XPATH, "/html/body/div[1]/div[2]/main/section[1]/div/a[2]")
+    SEARCH_PROJECT_FIELD = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/form/div/div[2]/div[1]/div/div/div/input')
+    SEARCH_BY_CHECKBOXES = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/form/div/div[3]/div[1]/div[1]/div/div')
+    SEARCH_BY_NAME_CHECKBOX = (By.XPATH, '/html/body/div[3]/div[3]/ul/li[2]/span[1]/input')
+    SEARCH_SUBMIT = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/form/div/div[2]/div/div/button')
+    STRANGE_CLOSE_LIST_CHECKBOX = (By.XPATH, '/html/body/div[3]/div[1]')
+    HEADER_H2 = (By.CSS_SELECTOR, 'h2')
+
+
+
 
 
 
