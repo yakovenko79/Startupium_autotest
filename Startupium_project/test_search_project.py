@@ -19,14 +19,11 @@ class TestSearchProject:
         page.open()
         search_project = SearchPage(browser, browser.current_url)
         search_project.go_to_find_project_page()
-        time.sleep(5)
         search_project.should_be_search_project_url()
         search_project.search_project_by_name(NAME)
         search_project.should_be_search_project_card(NAME)
         search_project.go_to_project_pressing_the_card(NAME)
         search_project.is_title_correct(NAME)
 
-
-        # search_project.should_be_search_project_card(NAME)
 
 

@@ -56,7 +56,6 @@ class CreateNewProjectLocators():
     PROJECT_TITLE = (By.CSS_SELECTOR, 'h2:nth-child(2)')
     NAME_PROJECT_CARD = (By.XPATH, '/html/body/div[1]/div[2]/main/section[2]/div/div[2]/div/div[1]/a/div/div/div['
                                    '1]/div/h2')
-    # LAST_PROJECT_CARD = (By.XPATH,'//*[@id="__next"]/div[2]/main/div/div/div[1]/div/div/div[1]/div')
 
 
 class SearchProjectLocators():
@@ -67,6 +66,26 @@ class SearchProjectLocators():
     SEARCH_SUBMIT = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/form/div/div[2]/div/div/button')
     STRANGE_CLOSE_LIST_CHECKBOX = (By.XPATH, '/html/body/div[3]/div[1]')
     HEADER_H2 = (By.CSS_SELECTOR, 'h2')
+
+# class ProjectCardData():
+#     PROJECT_PAGE_CARD_NAME
+#     PROJECT_PAGE_CARD_COMMENTS
+
+
+class HeaderLocators:
+    LOGO_STARTUPIUM = (By.CSS_SELECTOR, 'a')
+
+
+class FooterLocators:
+    FEEDBACK = (By.XPATH, "//a[text()='Отзывы и предложения']")
+    FEEDBACK_FORM_HEADER = (By.XPATH, "//span[text()='Отзывы и предложения']")
+    FEEDBACK_FORM_TITLE = (By.XPATH, '//h3[text()="Помогите нам стать лучше"]')
+    FEEDBACK_FORM_FIELD = (By.XPATH, '//*[@id=":r4:"]')
+    PROJECTS_TAB = (By.XPATH, '//footer//a[text()="Проекты"]')
+
+
+
+
 
 
 

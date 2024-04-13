@@ -12,6 +12,7 @@ class ProjectPage(BasePage):
     def go_to_project_page(self):
         btn_create_crew = self.browser.find_element(*MainPageLocators.CREATE_CREW_BUTTON)
         btn_create_crew.click()
+        time.sleep(3)
 
     def input_project_data(self, name, description, tag, about, hire):
         project_name = self.browser.find_element(*CreateNewProjectLocators.PROJECT_NAME)

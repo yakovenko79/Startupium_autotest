@@ -1,9 +1,14 @@
 import time
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
 
 from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.locators import SearchProjectLocators
+
+from selenium.webdriver.support import expected_conditions as EC
+
+
 
 
 def create_url(name):
@@ -16,8 +21,10 @@ class SearchPage(BasePage):
     def go_to_find_project_page(self):
         find = self.browser.find_element(*SearchProjectLocators.SEARCH_PROJECT_BTN)
         find.click()
+        time.sleep(2)
 
     def should_be_search_project_url(self):
+        time.sleep(1)
         assert "projects" in self.browser.current_url, "you're not on search project page"
 
     def should_be_search_project_card(self, name):
