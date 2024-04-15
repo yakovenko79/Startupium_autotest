@@ -1,11 +1,13 @@
 import pytest
 
+from Startupium_project.pages.articles_page import ArticlesPage
 from Startupium_project.pages.footer import Footer
 from Startupium_project.pages.header import Header
 from Startupium_project.pages.login_page import LoginPage
 from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.project_page import ProjectPage
-from Startupium_project.pages.search_page import SearchPage
+from Startupium_project.pages.search_project import SearchProject
+from Startupium_project.pages.search_user import SearchUser
 
 LINK = "https://test.startupium.ru"
 ID_PROJECT = "285"
@@ -33,7 +35,7 @@ class TestMainPage:
     def test_find_project_page_redirect_329(self, browser):
         page = MainPage(browser, LINK)
         page.open()
-        search_page = SearchPage(browser, browser.current_url)
+        search_page = SearchProject(browser, browser.current_url)
         search_page.go_to_find_project_page()
         search_page.should_be_search_project_url()
 
@@ -78,6 +80,27 @@ class TestMainPage:
             footer = Footer(browser, browser.current_url)
             footer.go_to_footer()
             footer.go_to_projects()
-            projects = SearchPage(browser, browser.current_url)
+            projects = SearchProject(browser, browser.current_url)
             projects.should_be_search_project_url()
+
+    def test_go_to_search_user_from_footer_unauth_345(self, browser):
+        for endpoint in PAGES:
+            address = f'{LINK}{endpoint}'
+            page = MainPage(browser, address)
+            page.open()
+            footer = Footer(browser, browser.current_url)
+            footer.go_to_footer()
+            footer.go_to_search_user()
+            users = SearchUser(browser, browser.current_url)
+            users.should_be_search_user_page_url()
+
+    def test_go_to_articles_page_by_click_article_tab_from_header_unauthorized_333(self, browser):
+        for endpoint in PAGES:
+            address = f'{LINK}{endpoint}'
+            page = MainPage(browser, address)
+            page.open()
+            header = Header(browser, browser.current_url)
+            header.press_article_tab()
+            article_page = ArticlesPage(browser, browser.current_url)
+            article_page.should_be_articles_page_url()
 

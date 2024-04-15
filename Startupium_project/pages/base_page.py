@@ -6,6 +6,7 @@ class BasePage():
     def __init__(self, browser, url, timeout=10):
         self.browser = browser
         self.url = url
+        self.browser.set_window_size(1920, 1080)
         self.browser.implicitly_wait(timeout)
 
     def go_to_login_page(self):

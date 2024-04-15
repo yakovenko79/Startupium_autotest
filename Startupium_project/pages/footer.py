@@ -25,9 +25,7 @@ class Footer(BasePage):
         projects = self.browser.find_element(*FooterLocators.PROJECTS_TAB)
         projects.click()
 
-
-
-
-
-
-
+    def go_to_search_user(self):
+        time.sleep(1)
+        search_user = self.browser.find_element(*FooterLocators.USERS_TAB)
+        search_user.click()

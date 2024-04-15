@@ -73,10 +73,12 @@ class SearchProjectLocators():
 
 
 class HeaderLocators:
+    HEADER_ARTICLE_TAB = (By.XPATH, '//a[text()="Статьи"]')
     LOGO_STARTUPIUM = (By.CSS_SELECTOR, 'a')
 
 
 class FooterLocators:
+    USERS_TAB = (By.CSS_SELECTOR, 'footer li:nth-child(2) > a')
     FEEDBACK = (By.XPATH, "//a[text()='Отзывы и предложения']")
     FEEDBACK_FORM_HEADER = (By.XPATH, "//span[text()='Отзывы и предложения']")
     FEEDBACK_FORM_TITLE = (By.XPATH, '//h3[text()="Помогите нам стать лучше"]')

@@ -30,6 +30,6 @@ class Header(BasePage):
         print("browser curr link [:-1] ", self.browser.current_url)
         assert link == self.browser.current_url[:-1], "This is not a main page"
 
-
-
-
+    def press_article_tab(self):
+        article_tab = self.browser.find_element(*HeaderLocators.HEADER_ARTICLE_TAB)
+        article_tab.click()

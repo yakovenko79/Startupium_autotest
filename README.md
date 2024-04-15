@@ -3,10 +3,12 @@ Starupium_project проект автоматизации тестировани
 В пакете Startupium_project лежат:
 - conftest - это хранилище фикстур, пока здесь лежат запуск драйвера и остановка. Также выбор браузера (Chrome или Firefox). По умолчанию хром.<br>
 - папка pages: тут лежат файлы страниц (Page Object рекомендует =))<br>
+   articles_page.py - страница статей<br>
+   search_user.py - страница поиска пользователей<br>
    base_page.py - базовый класс<br>
    login_page.py - страница логина<br>
    main_page.py - главная страница<br>
-   search_page.py - страница поиска проектов<br>
+   search_project.py - страница поиска проектов<br>
    footer.py - футер<br>
    header.py -  хедер<br>
    locators.py - селекторы<br>
