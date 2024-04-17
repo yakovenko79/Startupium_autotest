@@ -22,6 +22,9 @@ class SearchProject(BasePage):
         time.sleep(1)
         assert "projects" in self.browser.current_url, "you're not on search project page"
 
+    def should_be_search_project_page(self):
+        assert self.is_element_present(*SearchProjectLocators.SEARCH_PROJECT_TITLE)
+
     def should_be_search_project_card(self, name):
         card_names = self.browser.find_elements(By.TAG_NAME, "h2")
         lst = []
@@ -52,6 +55,8 @@ class SearchProject(BasePage):
     def is_title_correct(self, name):
         title = self.browser.find_element(*SearchProjectLocators.HEADER_H2).text
         assert name == title, "Wrong title"
+
+
 
 
 

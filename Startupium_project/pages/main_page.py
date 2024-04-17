@@ -1,12 +1,12 @@
+import time
+
 from .base_page import BasePage
+from .locators import MainPageLocators
 
 
 class MainPage(BasePage):
     def __init__(self, *args, **kwargs):
         super(MainPage, self).__init__(*args, **kwargs)
 
-    # def is_this_main_page(self):
-    #     assert "https://test.startupium.ru" == self.browser.current_url, "This is not a main page"
-
-
-
+    def description_conforms_requirements(self):
+        assert self.browser.find_element(*MainPageLocators.DESCRIPTION).text == "Здесь можно найти команду для стартапа, присоединиться в уже существующий проект, найти инвестора и партнёра", "Description is different or absent"

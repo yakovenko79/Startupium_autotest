@@ -7,6 +7,7 @@ from Startupium_project.pages.locators import FooterLocators
 
 
 class Footer(BasePage):
+
     def go_to_footer(self):
         feedback = self.browser.find_element(*FooterLocators.FEEDBACK)
         self.browser.execute_script("arguments[0].scrollIntoView(true);", feedback)
@@ -29,3 +30,8 @@ class Footer(BasePage):
         time.sleep(1)
         search_user = self.browser.find_element(*FooterLocators.USERS_TAB)
         search_user.click()
+
+    def go_to_about(self):
+        time.sleep(1)
+        about = self.browser.find_element(*FooterLocators.ABOUT_TAB)
+        about.click()

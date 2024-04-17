@@ -1,5 +1,6 @@
 import pytest
 
+from Startupium_project.pages.about_page import About
 from Startupium_project.pages.articles_page import ArticlesPage
 from Startupium_project.pages.footer import Footer
 from Startupium_project.pages.header import Header
@@ -30,6 +31,7 @@ PAGES = ["/projects",
          f"/project-blog/{PROJECT_ID}/articles"]
 
 
+@pytest.mark.regression
 class TestMainPage:
     @pytest.mark.regression
     def test_find_project_page_redirect_329(self, browser):
@@ -100,7 +102,59 @@ class TestMainPage:
             page = MainPage(browser, address)
             page.open()
             header = Header(browser, browser.current_url)
-            header.press_article_tab()
+            header.press_article_tab("article")
+            header.should_this_tab_change_color_after_click("article")
             article_page = ArticlesPage(browser, browser.current_url)
             article_page.should_be_articles_page_url()
+
+    def test_go_to_search_projects_page_by_click_projects_tab_from_header_unauthorized_331(self, browser):
+        for endpoint in PAGES:
+            address = f'{LINK}{endpoint}'
+            page = MainPage(browser, address)
+            page.open()
+            header = Header(browser, browser.current_url)
+            header.press_projects_tab("proj")
+            header.should_this_tab_change_color_after_click("proj")
+            projects = SearchProject(browser, browser.current_url)
+            projects.should_be_search_project_url()
+            projects.should_be_search_project_page()
+
+    def test_go_to_users_page_by_click_users_tab_from_header_unauthorized_332(self, browser):
+        for endpoint in PAGES:
+            address = f'{LINK}{endpoint}'
+            page = MainPage(browser, address)
+            page.open()
+            header = Header(browser, browser.current_url)
+            header.press_user_tab("user")
+            header.should_this_tab_change_color_after_click("user")
+            users = SearchUser(browser, browser.current_url)
+            users.should_be_search_user_page_url()
+
+    def test_go_to_about_page_by_click_about_tab_from_header_unauthorized_334(self, browser):
+        for endpoint in PAGES:
+            address = f'{LINK}{endpoint}'
+            page = MainPage(browser, address)
+            page.open()
+            header = Header(browser, browser.current_url)
+            header.press_about_tab("about")
+            header.should_this_tab_change_color_after_click("about")
+            about = About(browser, browser.current_url)
+            about.should_be_about_page_url()
+
+    def test_go_to_about_from_footer_unauth_346(self, browser):
+        for endpoint in PAGES:
+            address = f'{LINK}{endpoint}'
+            page = MainPage(browser, address)
+            page.open()
+            footer = Footer(browser, browser.current_url)
+            footer.go_to_footer()
+            footer.go_to_about()
+            about = About(browser, browser.current_url)
+            about.should_be_about_page_url()
+
+    def test_description_conforms_requirements_unauth_338(self, browser):
+        page = MainPage(browser, LINK)
+        page.open()
+        page.description_conforms_requirements()
+
 

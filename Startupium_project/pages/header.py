@@ -2,8 +2,6 @@ import time
 
 from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.locators import HeaderLocators
-from Startupium_project.pages.main_page import MainPage
-
 
 class Header(BasePage):
 
@@ -30,6 +28,27 @@ class Header(BasePage):
         print("browser curr link [:-1] ", self.browser.current_url)
         assert link == self.browser.current_url[:-1], "This is not a main page"
 
-    def press_article_tab(self):
-        article_tab = self.browser.find_element(*HeaderLocators.HEADER_ARTICLE_TAB)
+    def press_article_tab(self, tab):
+        article_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
         article_tab.click()
+
+    def press_projects_tab(self, tab):
+        projects_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
+        projects_tab.click()
+
+    def should_project_tab(self):
+        assert self.is_element_present(*HeaderLocators.HEADER_PROJECTS_TAB)
+
+    def should_this_tab_change_color_after_click(self, tab):
+        assert self.is_element_present(*HeaderLocators.get_header_tab_after_click(tab)), "Don't change color of another tab"
+
+    def press_user_tab(self, tab):
+        user_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
+        user_tab.click()
+
+    def press_about_tab(self, tab):
+        about_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
+        about_tab.click()
+
+
+
