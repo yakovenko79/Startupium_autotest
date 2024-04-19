@@ -1,6 +1,5 @@
 import time
 
-from selenium.webdriver.support.wait import WebDriverWait
 
 from Startupium_project.pages.base_page import BasePage
 

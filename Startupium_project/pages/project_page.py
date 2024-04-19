@@ -1,5 +1,4 @@
 import time
-from Startupium_project.pages.locators import CreateNewProjectLocators
 from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.locators import MainPageLocators, CreateNewProjectLocators
 
@@ -12,7 +11,6 @@ class ProjectPage(BasePage):
     def go_to_project_page(self):
         btn_create_crew = self.browser.find_element(*MainPageLocators.CREATE_CREW_BUTTON)
         btn_create_crew.click()
-        time.sleep(3)
 
     def input_project_data(self, name, description, tag, about, hire):
         project_name = self.browser.find_element(*CreateNewProjectLocators.PROJECT_NAME)
@@ -62,5 +60,3 @@ class ProjectPage(BasePage):
     def is_name_of_project_present_on_main_page(self, name):
         project_title = self.browser.find_element(*CreateNewProjectLocators.NAME_PROJECT_CARD).text
         assert project_title == name, "Takogo proekta net"
-
-

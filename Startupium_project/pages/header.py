@@ -3,6 +3,7 @@ import time
 from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.locators import HeaderLocators
 
+
 class Header(BasePage):
 
     # def go_to_main_page_by_click_logo_unauthorized(self, browser, link):
@@ -23,9 +24,6 @@ class Header(BasePage):
         time.sleep(3)
 
     def is_this_main_page(self, link):
-        print("link ", link)
-        print("browser curr link ", self.browser.current_url)
-        print("browser curr link [:-1] ", self.browser.current_url)
         assert link == self.browser.current_url[:-1], "This is not a main page"
 
     def press_article_tab(self, tab):
@@ -49,6 +47,23 @@ class Header(BasePage):
     def press_about_tab(self, tab):
         about_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
         about_tab.click()
+
+    def should_header_present(self):
+        assert self.is_element_present(*HeaderLocators.HEADER), "Header is absent"
+
+    def should_users_tab(self):
+        assert self.is_element_present(*HeaderLocators.HEADER_USERS_TAB), "Users tab is absent"
+
+    def should_articles_tab(self):
+        assert self.is_element_present(*HeaderLocators.HEADER_ARTICLE_TAB), "Articles tab is absent"
+
+    def should_about_tab(self):
+        assert self.is_element_present(*HeaderLocators.HEADER_ABOUT_TAB), "About tab is absent"
+
+    def should_login_button(self):
+        assert self.is_element_present(*HeaderLocators.LOGIN_BTN), "Login button is absent"
+
+
 
 
 

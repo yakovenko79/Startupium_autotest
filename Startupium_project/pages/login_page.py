@@ -1,8 +1,9 @@
+import time
+
 from selenium.webdriver.common.by import By
 
 from .base_page import BasePage
 from .locators import LoginPageLocators
-from .main_page import MainPage
 
 
 class LoginPage(BasePage):
@@ -47,6 +48,7 @@ class LoginPage(BasePage):
         login_password.send_keys(password)
         login_button = self.browser.find_element(*LoginPageLocators.LOGIN_BUTTON)
         login_button.click()
+        time.sleep(2)
 
 
 

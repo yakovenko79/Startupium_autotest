@@ -9,11 +9,17 @@ header_tabs = {
 
 
 class MainPageLocators():
+    TEXT_BTN_PROFILES = (By.XPATH, '//li[text()="Профили"]')
+    TITLE = (By.CSS_SELECTOR, "section > h1")
     DESCRIPTION = (By.XPATH, '//main//section/h2')
     LOGIN_LINK = (By.CSS_SELECTOR,
                   "#__next > div.css-1c4mae2 > header > div > "
                   "a.MuiTypography-root.MuiTypography-inherit.MuiLink-root.MuiLink-underlineAlways.css-mss1w8 > span")
     CREATE_CREW_BUTTON = (By.XPATH, '//*[@id="__next"]/div[2]/main/section[1]/div/a[1]')
+    # LINKS_PROJECTS_CARD = (By.XPATH, '//div//a[contains(@href, "/project/")]')
+    LIST_LINKS_CARDS = (By.CSS_SELECTOR, "div >div > div > a[href]")
+    # TEMPLATE_NAME_PROFILE_CARD = (By.XPATH, f'//section[2]/div/div[2]/div/div[{}]')
+    name_card_1 = (By.XPATH, '//section[2]/div/div[2]/div/div[1]/a/div/div[1]/div[2]/span[1]')
 
 
 class LoginPageLocators():
@@ -78,6 +84,8 @@ class SearchProjectLocators():
 
 
 class HeaderLocators:
+    LOGIN_BTN = (By.XPATH, '//header//a[@title="Войти"]')
+    HEADER = (By.TAG_NAME, 'header')
     HEADER_PROJECTS_TAB = (By.XPATH, '//header//a[text()="Проекты"]')
     HEADER_USERS_TAB = (By.XPATH, '//header//a[text()="Пользователи"]')
     HEADER_ABOUT_TAB = (By.XPATH, '//header//a[text()="О сайте"]')
@@ -97,6 +105,8 @@ class HeaderLocators:
 
 
 class FooterLocators:
+    PRIVACY = (By.CSS_SELECTOR, 'footer div:last-child')
+    FOOTER_FOOTER = (By.CSS_SELECTOR, "footer")
     USERS_TAB = (By.CSS_SELECTOR, 'footer li:nth-child(2) > a')
     FEEDBACK = (By.XPATH, "//a[text()='Отзывы и предложения']")
     FEEDBACK_FORM_HEADER = (By.XPATH, "//span[text()='Отзывы и предложения']")
@@ -104,3 +114,16 @@ class FooterLocators:
     FEEDBACK_FORM_FIELD = (By.XPATH, '//*[@id=":r4:"]')
     PROJECTS_TAB = (By.XPATH, '//footer//a[text()="Проекты"]')
     ABOUT_TAB = (By.XPATH, '//footer//a[text()="О сайте"]')
+
+
+class RegisterPageLocators:
+    CHECKBOX_SOCIAL = (By.XPATH, '//main/div/div/div[2]/div[1]/div/div[3]/div/div[1]/div[2]/span[1]/span[1]/input')
+    CHECKBOX_ABOUT = (By.XPATH, '//main/div/div/div[2]/div[1]/div/div[2]/div[1]/div[2]/span[1]/span[1]/input')
+    CHECKBOX_QUALIFIERS = (By.XPATH, "//main/div/div/div[2]/div[1]/div/div[1]/div/div/div[1]/div[2]/div/span[1]/span[1]/input")
+    POSITION_FIELD = (By.CSS_SELECTOR, "input#\:rb\:")
+    ROLE_TAG_FOUNDER= (By.XPATH, "//label[@for='founder']")
+    NEXT_STEP_BTN = (By.XPATH, "//*[@id='__next']/div[2]/main/div/div/div[2]/div[2]/div[2]/button")
+    CHECKBOX_FILL_LATER = (By.XPATH, "//input[@type='checkbox']")
+    CHECKBOX_FILL_LATER_2 = (By.XPATH, "//div//span//span//input[@type='checkbox']")
+
+

@@ -1,7 +1,5 @@
 import time
 
-from selenium.webdriver import ActionChains
-
 from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.locators import FooterLocators
 
@@ -35,3 +33,27 @@ class Footer(BasePage):
         time.sleep(1)
         about = self.browser.find_element(*FooterLocators.ABOUT_TAB)
         about.click()
+
+    def should_footer_present(self):
+        assert self.is_element_present(*FooterLocators.FOOTER_FOOTER), "Футера нет"
+
+    def should_project_footer_tab(self):
+        assert self.is_element_present(*FooterLocators.PROJECTS_TAB), "Таба 'Проекты' нет"
+
+    def should_users_footer_tab(self):
+        assert self.is_element_present(*FooterLocators.USERS_TAB), "Таба 'Пользователи' нет"
+
+    def should_about(self):
+        assert self.is_element_present(*FooterLocators.ABOUT_TAB), "Таба 'О сайте' нет"
+
+    def should_feedback_tab(self):
+        assert self.is_element_present(*FooterLocators.FEEDBACK), "Таба 'Отзывы и предложения' нет"
+
+    def should_privacy_links(self):
+        assert self.is_element_present(*FooterLocators.PRIVACY), "Сведений о политике конфиденциальности нет"
+
+
+
+
+
+
