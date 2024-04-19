@@ -1,5 +1,3 @@
-import time
-
 import pytest
 
 from Startupium_project.pages.main_page import MainPage

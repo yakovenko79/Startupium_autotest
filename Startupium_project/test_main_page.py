@@ -11,12 +11,14 @@ from Startupium_project.pages.search_project import SearchProject
 from Startupium_project.pages.search_user import SearchUser
 
 LINK = "https://test.startupium.ru"
+GET_URL = "https://test.startupium.ru/api/users"
 ID_PROJECT = "285"
 SLUG = "new-project"
 ARTICLE_SLUG = "autotest-article"
 USERID = "285"
 PROJECT_ID = "69"
-PAGES = ["/projects",
+PAGES = ["/",
+         "/projects",
          "/users",
          "/articles",
          "/about",
@@ -157,4 +159,54 @@ class TestMainPage:
         page.open()
         page.description_conforms_requirements()
 
+    def test_title_conforms_requirements_unauth_337(self, browser):
+        page = MainPage(browser, LINK)
+        page.open()
+        page.title_conforms_requirements()
 
+    def test_header_present_on_each_page_unauth_330(self, browser):
+        for endpoint in PAGES:
+            address = f'{LINK}{endpoint}'
+            page = MainPage(browser, address)
+            page.open()
+            header = Header(browser, browser.current_url)
+            header.should_header_present()
+            header.should_project_tab()
+            header.should_users_tab()
+            header.should_articles_tab()
+            header.should_about_tab()
+            header.should_login_button()
+
+    def test_footer_present_on_each_page_unauth_343(self, browser):
+        for endpoint in PAGES:
+            address = f'{LINK}{endpoint}'
+            page = MainPage(browser, address)
+            page.open()
+            footer = Footer(browser, browser.current_url)
+            footer.should_footer_present()
+            footer.should_project_footer_tab()
+            footer.should_users_footer_tab()
+            footer.should_about()
+            footer.should_feedback_tab()
+            footer.should_privacy_links()
+
+    def test_text_button_profiles_ui_unauth_341(self, browser):
+        """Проверка того, что сервер возвращает нам карточки только пользователей,
+         их не более 30 и они идут по убыванию id"""
+        page = MainPage(browser, LINK)
+        page.open()
+        page.press_text_btn_profiles()
+        page.should_only_profile_cards_ui()
+
+    def test_text_button_profiles_api_unauth_341(self):
+        """Проверка того, что сервер возвращает нам карточки только пользователей,
+         их не более 30 и они идут по убыванию id"""
+        MainPage.should_only_profile_cards_api()
+
+    def test_text_button_profiles_ui_api_unauth_341(self, browser):
+        """Проверка того, что заголовок имени каждой карточки пользователя в контенте главной страницы соответствует
+        значению 'firstname', 'lastname' соответствующего элемента в полученном json файле"""
+        page = MainPage(browser, LINK)
+        page.open()
+        page.press_text_btn_profiles()
+        page.check_profile_name_card_conforms_api_ui()

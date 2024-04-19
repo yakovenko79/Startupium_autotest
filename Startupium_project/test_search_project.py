@@ -1,5 +1,3 @@
-import time
-
 from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.search_project import SearchProject
 

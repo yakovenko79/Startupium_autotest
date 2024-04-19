@@ -1,9 +1,4 @@
-import time
-
-import pytest
-
 from Startupium_project.conftest import browser
-from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.login_page import LoginPage
 from Startupium_project.pages.project_page import ProjectPage
@@ -32,7 +27,6 @@ class TestCreateNewProject:
         login_page = LoginPage(browser, browser.current_url)
         login_page.should_be_login_url()
         login_page.input_login_credentials(EMAIL_USER, EMAIL_PASSWORD)
-        login_page.should_be_login_url()
         project_page = ProjectPage(browser, browser.current_url)
         project_page.go_to_project_page()
         project_page.go_to_project_page()
@@ -48,7 +42,20 @@ class TestCreateNewProject:
         login_page = LoginPage(browser, browser.current_url)
         login_page.should_be_login_url()
         login_page.input_login_credentials(EMAIL_USER, EMAIL_PASSWORD)
-        login_page.should_be_login_url()
+        # if "registration" in browser.current_url:
+        #     print("Reg page")
+        #     reg_page = RegistrationPage(browser, browser.current_url)
+        #     reg_page.input_data_position_field()
+        #     reg_page.select_role_by_tag()
+        #     reg_page.press_btn_next()
+        #     reg_page.press_chkbx_later()
+        #     reg_page.press_btn_next_2()
+        #     reg_page.press_chkbx_later()
+        #     reg_page.press_btn_next_3()
+        #     reg_page.press_chckbx_qualities()
+        #     reg_page.press_checkbox_about()
+        #     reg_page.press_chkbx_soc_networks()
+        #     reg_page.press_btn_finish()
         project_page = ProjectPage(browser, browser.current_url)
         project_page.go_to_project_page()
         project_page.go_to_project_page()
