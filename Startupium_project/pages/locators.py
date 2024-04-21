@@ -16,22 +16,13 @@ class MainPageLocators():
                   "#__next > div.css-1c4mae2 > header > div > "
                   "a.MuiTypography-root.MuiTypography-inherit.MuiLink-root.MuiLink-underlineAlways.css-mss1w8 > span")
     CREATE_CREW_BUTTON = (By.XPATH, '//*[@id="__next"]/div[2]/main/section[1]/div/a[1]')
-    # LINKS_PROJECTS_CARD = (By.XPATH, '//div//a[contains(@href, "/project/")]')
     LIST_LINKS_CARDS = (By.CSS_SELECTOR, "div >div > div > a[href]")
-    # TEMPLATE_NAME_PROFILE_CARD = (By.XPATH, f'//section[2]/div/div[2]/div/div[{}]')
-    # name_card_1 = (By.XPATH, '//section[2]/div/div[2]/div/div[1]/a/div/div[1]/div[2]/span[1]')
 
 
 class LoginPageLocators():
     LOGIN_EMAIL = (By.XPATH, '//input[@placeholder="Введите email"]')
     LOGIN_PASSWORD = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/div/form/ul/li[2]/div/div/div[2]/div/input')
     LOGIN_BUTTON = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/div/form/button')
-    # REGISTER_NAME = (By.CSS_SELECTOR, "input")
-    # REGISTER_EMAIL = (By.ID, ":r9:")
-    # REGISTER_BUTTON = (By.XPATH, '//*[@id="__next"]/div[2]/main/div/div/div/div/form/button/p')
-    # REGISTER_PASSWORD = (By.CSS_SELECTOR, "#\:ra\:")
-    # REGISTER_CONFIRM_PASSWORD = (By.CSS_SELECTOR, "#\:rb\:")
-    # IS_LOGGED_IN = (By.XPATH, '/html/body/div[1]/div[2]/header/div/div/div[2]/div[1]/button/svg')
 
 
 class BasePageLocators():

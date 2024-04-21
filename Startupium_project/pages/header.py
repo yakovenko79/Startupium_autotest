@@ -6,18 +6,6 @@ from Startupium_project.pages.locators import HeaderLocators
 
 class Header(BasePage):
 
-    # def go_to_main_page_by_click_logo_unauthorized(self, browser, link):
-    #     pages = ["/projects", "/users", "/articles", "/about", "/login", "/create-account", "/terms_of_service",
-    #              "/policy", "/project/{slug}", "/profile-blog/{userId}/articles", "/profile-blog/{userId}/article/{"
-    #                                                                               "slug}", "/profile/{id}",
-    #              "/project-blog/{projectId}/articles"]
-    #     for endpoint in pages:
-    #         address = f'{link}{endpoint}'
-    #         page = MainPage(browser, address)
-    #         page.open()
-    #         logo = self.browser.find_element(*HeaderLocators.LOGO_STARTUPIUM)
-    #         logo.click()
-
     def press_logo(self):
         logo = self.browser.find_element(*HeaderLocators.LOGO_STARTUPIUM)
         logo.click()

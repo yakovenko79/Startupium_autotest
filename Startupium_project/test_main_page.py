@@ -35,7 +35,7 @@ PAGES = ["/",
 
 @pytest.mark.regression
 class TestMainPage:
-    @pytest.mark.regression
+
     def test_find_project_page_redirect_329(self, browser):
         page = MainPage(browser, LINK)
         page.open()
@@ -43,7 +43,7 @@ class TestMainPage:
         search_page.go_to_find_project_page()
         search_page.should_be_search_project_url()
 
-    @pytest.mark.regression
+
     def test_create_project_page_redirect_339(self, browser):
         page = MainPage(browser, LINK)
         page.open()
@@ -54,7 +54,7 @@ class TestMainPage:
         login_page.should_be_login_email()
         login_page.should_be_login_password()
 
-    @pytest.mark.regression
+
     def test_go_to_main_page_by_click_logo_unauthorized_335(self, browser):
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
@@ -64,7 +64,7 @@ class TestMainPage:
             header.press_logo()
             header.is_this_main_page(LINK)
 
-    @pytest.mark.regression
+
     def test_go_to_feedback_form_from_footer_unauth_347(self, browser):
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
@@ -75,7 +75,7 @@ class TestMainPage:
             footer.go_to_feedback()
             footer.should_feedback_form_appears()
 
-    @pytest.mark.regression
+
     def test_go_to_projects_page_from_footer_unauth_344(self, browser):
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
