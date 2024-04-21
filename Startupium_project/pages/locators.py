@@ -19,7 +19,7 @@ class MainPageLocators():
     # LINKS_PROJECTS_CARD = (By.XPATH, '//div//a[contains(@href, "/project/")]')
     LIST_LINKS_CARDS = (By.CSS_SELECTOR, "div >div > div > a[href]")
     # TEMPLATE_NAME_PROFILE_CARD = (By.XPATH, f'//section[2]/div/div[2]/div/div[{}]')
-    name_card_1 = (By.XPATH, '//section[2]/div/div[2]/div/div[1]/a/div/div[1]/div[2]/span[1]')
+    # name_card_1 = (By.XPATH, '//section[2]/div/div[2]/div/div[1]/a/div/div[1]/div[2]/span[1]')
 
 
 class LoginPageLocators():
