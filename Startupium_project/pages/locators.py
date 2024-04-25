@@ -9,7 +9,8 @@ header_tabs = {
 
 
 class MainPageLocators():
-    TEXT_BTN_PROFILES = (By.XPATH, '//li[text()="Профили"]')
+    HEADER_NEW = (By.CSS_SELECTOR, 'section h2')
+    TEXT_BTN_PROFILES = (By.XPATH, '//ul/li[text()="Профили"]')
     TITLE = (By.CSS_SELECTOR, "section > h1")
     DESCRIPTION = (By.XPATH, '//main//section/h2')
     LOGIN_LINK = (By.CSS_SELECTOR,

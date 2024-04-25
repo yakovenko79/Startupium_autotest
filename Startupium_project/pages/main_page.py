@@ -16,8 +16,8 @@ class MainPage(BasePage):
 
     def description_conforms_requirements(self):
         assert self.browser.find_element(
-            *MainPageLocators.DESCRIPTION).text == ("Здесь можно найти команду для стартапа, присоединиться в уже "
-                                                    "существующий проект, найти инвестора и партнёра"), ("Description "
+            *MainPageLocators.DESCRIPTION).text == ("Здесь можно найти команду для стартапа, присоединиться к уже "
+                                                    "существующему проекту, найти инвестора и партнёра"), ("Description "
                                                                                                          "is "
                                                                                                          "different "
                                                                                                          "or absent")
@@ -27,8 +27,9 @@ class MainPage(BasePage):
             *MainPageLocators.TITLE).text == "Startupium", "Заголовок не соответствует требованиям или отсутствует"
 
     def press_text_btn_profiles(self):
+        hdr = self.browser.find_element(*MainPageLocators.HEADER_NEW)
         tb = self.browser.find_element(*MainPageLocators.TEXT_BTN_PROFILES)
-        self.browser.execute_script("arguments[0].scrollIntoView(true);", tb)
+        self.browser.execute_script("arguments[0].scrollIntoView(true);", hdr)
         tb.click()
         time.sleep(1)
 
@@ -76,11 +77,15 @@ class MainPage(BasePage):
         response = requests.get(url)
         js = response.json()
         l = []
+        print(js)
         for i in range(len(js['data'])):
             fname = js['data'][i]['firstname']
             lname = js['data'][i]['lastname']
-            name = (fname + " " + lname).rstrip()
+            print('fname', type(fname))
+            print('lname',type(lname))
+            name = (str(str(fname) if fname is not None else '')  + " " + str(str(lname) if lname is not None else "")).rstrip()
             l.append(name)
+        print("api names ", l)
         return l
 
     def check_profile_name_card_conforms_api_ui(self):

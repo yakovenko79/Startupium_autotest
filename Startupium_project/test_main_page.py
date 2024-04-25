@@ -43,7 +43,6 @@ class TestMainPage:
         search_page.go_to_find_project_page()
         search_page.should_be_search_project_url()
 
-
     def test_create_project_page_redirect_339(self, browser):
         page = MainPage(browser, LINK)
         page.open()
@@ -54,7 +53,6 @@ class TestMainPage:
         login_page.should_be_login_email()
         login_page.should_be_login_password()
 
-
     def test_go_to_main_page_by_click_logo_unauthorized_335(self, browser):
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
@@ -63,7 +61,6 @@ class TestMainPage:
             header = Header(browser, browser.current_url)
             header.press_logo()
             header.is_this_main_page(LINK)
-
 
     def test_go_to_feedback_form_from_footer_unauth_347(self, browser):
         for endpoint in PAGES:
@@ -74,7 +71,6 @@ class TestMainPage:
             footer.go_to_footer()
             footer.go_to_feedback()
             footer.should_feedback_form_appears()
-
 
     def test_go_to_projects_page_from_footer_unauth_344(self, browser):
         for endpoint in PAGES:
