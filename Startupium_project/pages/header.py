@@ -51,6 +51,11 @@ class Header(BasePage):
     def should_login_button(self):
         assert self.is_element_present(*HeaderLocators.LOGIN_BTN), "Login button is absent"
 
+    def is_user_logged_in(self):
+        assert self.is_not_element_present(*HeaderLocators.LOGIN_BTN)
+        assert self.is_element_present(*HeaderLocators.MESSAGES_BTN)
+        assert self.is_element_present(*HeaderLocators.NOTIFICATIONS_BTN)
+
 
 
 

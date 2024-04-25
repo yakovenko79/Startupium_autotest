@@ -1,5 +1,6 @@
 import pytest
 
+from Startupium_project.pages.header import Header
 from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.login_page import LoginPage
 
@@ -21,7 +22,8 @@ class TestLoginPage:
         login_page = LoginPage(browser, browser.current_url)
         login_page.should_be_login_url()
         login_page.input_login_credentials(EMAIL_USER, EMAIL_PASSWORD)
-        login_page.should_be_login_url()
+        head = Header(browser, browser.current_url)
+        head.is_user_logged_in()
 
 
 

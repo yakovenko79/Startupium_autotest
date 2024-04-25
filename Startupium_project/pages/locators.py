@@ -21,6 +21,7 @@ class MainPageLocators():
 
 
 class LoginPageLocators():
+    IS_LOGGED_IN = None
     LOGIN_EMAIL = (By.XPATH, '//input[@placeholder="Введите email"]')
     LOGIN_PASSWORD = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/div/form/ul/li[2]/div/div/div[2]/div/input')
     LOGIN_BUTTON = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/div/form/button')
@@ -76,6 +77,8 @@ class SearchProjectLocators():
 
 
 class HeaderLocators:
+    NOTIFICATIONS_BTN = (By.CSS_SELECTOR, 'header > div > div > button:nth-child(1)')
+    MESSAGES_BTN = (By.CSS_SELECTOR, 'header > div > div > button:nth-child(3)')
     LOGIN_BTN = (By.XPATH, '//header//a[@title="Войти"]')
     HEADER = (By.TAG_NAME, 'header')
     HEADER_PROJECTS_TAB = (By.XPATH, '//header//a[text()="Проекты"]')
