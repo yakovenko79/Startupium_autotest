@@ -58,5 +58,6 @@ class ProjectPage(BasePage):
         assert project_title == name
 
     def is_name_of_project_present_on_main_page(self, name):
+        self.browser.set_page_load_timeout(5)
         project_title = self.browser.find_element(*CreateNewProjectLocators.NAME_PROJECT_CARD).text
         assert project_title == name, "Takogo proekta net"

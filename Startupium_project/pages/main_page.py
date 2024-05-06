@@ -1,5 +1,6 @@
 import time
 import requests
+from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 from .base_page import BasePage
@@ -15,6 +16,7 @@ class MainPage(BasePage):
         super(MainPage, self).__init__(*args, **kwargs)
 
     def description_conforms_requirements(self):
+        """Проверка соответствия надписи обложки главной страницы требованиям"""
         assert self.browser.find_element(
             *MainPageLocators.DESCRIPTION).text == ("Здесь можно найти команду для стартапа, присоединиться к уже "
                                                     "существующему проекту, найти инвестора и партнёра"), ("Description "
@@ -23,10 +25,12 @@ class MainPage(BasePage):
                                                                                                          "or absent")
 
     def title_conforms_requirements(self):
+        """Проверка соответствия заголовка главной страницы требованиям"""
         assert self.browser.find_element(
             *MainPageLocators.TITLE).text == "Startupium", "Заголовок не соответствует требованиям или отсутствует"
 
     def press_text_btn_profiles(self):
+        """Нажатие на текстовую кнопку Профили"""
         hdr = self.browser.find_element(*MainPageLocators.HEADER_NEW)
         tb = self.browser.find_element(*MainPageLocators.TEXT_BTN_PROFILES)
         self.browser.execute_script("arguments[0].scrollIntoView(true);", hdr)
@@ -34,6 +38,7 @@ class MainPage(BasePage):
         time.sleep(1)
 
     def should_only_profile_cards_ui(self):
+        """Проверка того, что только карточки профилей """
         posts = self.browser.find_elements(*MainPageLocators.LIST_LINKS_CARDS)
         links = [post.get_attribute("href") for post in posts]
         for link in links:
@@ -91,3 +96,10 @@ class MainPage(BasePage):
     def check_profile_name_card_conforms_api_ui(self):
         """Проверка того, что имена в карточках пользователей идут в том же порядке как и в json"""
         assert self.get_name_profile_card_from_ui() == self.get_name_profile_profile_from_api(), "Не совпадают"
+
+    def go_to_profile_from_card(self):
+        """Переход на страницу профиля с карточки профиля главной страницы"""
+        profile_card = self.browser.find_element(By.XPATH, "//a[@href='/profile/11']")
+        ActionChains(self.browser).move_to_element(profile_card).click().perform()
+
+

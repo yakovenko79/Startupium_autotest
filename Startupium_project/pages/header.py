@@ -1,7 +1,7 @@
 import time
 
 from Startupium_project.pages.base_page import BasePage
-from Startupium_project.pages.locators import HeaderLocators
+from Startupium_project.pages.locators import HeaderLocators, ProfilePageLocators
 
 
 class Header(BasePage):
@@ -56,7 +56,29 @@ class Header(BasePage):
         assert self.is_element_present(*HeaderLocators.MESSAGES_BTN)
         assert self.is_element_present(*HeaderLocators.NOTIFICATIONS_BTN)
 
+    def should_messages_list_is_empty(self):
+        pass
 
+    def is_not_new_messages(self):
+        assert self.is_element_present(*HeaderLocators.MESSAGES_NOT_EXIST), "User has new message"
 
+    def are_new_messages(self):
+        assert self.is_not_element_present(*HeaderLocators.MESSAGES_NOT_EXIST), "Новые сообщения не получены"
+
+    def logout(self):
+        open_dropdown = self.browser.find_element(*HeaderLocators.DROPDOWN_MENU_BTN)
+        open_dropdown.click()
+        logout_btn = self.browser.find_element(*HeaderLocators.LOGOUT_BTN)
+        logout_btn.click()
+
+    def go_to_messages(self):
+        message_btn = self.browser.find_element(*HeaderLocators.MESSAGES_BTN)
+        message_btn.click()
+        time.sleep(2)
+        user_account = self.browser.find_element(*ProfilePageLocators.USER_ACCOUNT_2)
+        user_account.click()
+        time.sleep(1)
+        close_messages_modal = self.browser.find_element(*HeaderLocators.CLOSE_MODAL)
+        close_messages_modal.click()
 
 

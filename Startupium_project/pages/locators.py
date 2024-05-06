@@ -39,7 +39,7 @@ class CreateNewProjectLocators():
     COUNTRIES_DROP = (By.ID, ':r7:')
     COUNTRY_NAME = (By.ID, ':r7:-option-2')
     CITIES_DROP = (By.ID, ':r9:')
-    CITY_NAME = (By.ID, ':r9:-option-5')
+    CITY_NAME = (By.ID, ':r9:-option-0')
     SAVE_TO_DRAFT_BTN = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/form/div[2]/button[2]')
     PUBLISH_PROJECT_BTN = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/form/div[2]/button[1]')
     BRIEF_DESCRIPTION = (By.XPATH, "/html/body/div[1]/div[2]/main/div/div/div/form/div[1]/ul/li[3]/div[2]/div/div"
@@ -61,8 +61,7 @@ class CreateNewProjectLocators():
                                          "2]/div/div/div/span/button")
     SEE_THE_PROJECT_BTN = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/form/div[2]/div/div/a')
     PROJECT_TITLE = (By.CSS_SELECTOR, 'h2:nth-child(2)')
-    NAME_PROJECT_CARD = (By.XPATH, '/html/body/div[1]/div[2]/main/section[2]/div/div[2]/div/div[1]/a/div/div/div['
-                                   '1]/div/h2')
+    NAME_PROJECT_CARD = (By.CSS_SELECTOR, 'div>div>div>h2')
 
 
 class SearchProjectLocators():
@@ -77,8 +76,12 @@ class SearchProjectLocators():
 
 
 class HeaderLocators:
+    CLOSE_MODAL = (By.CSS_SELECTOR, 'div.MuiBox-root>div.MuiBox-root>div.MuiBox-root>div.MuiBox-root>button')
+    LOGOUT_BTN = (By.XPATH, '//div/ul/li[6]')
+    DROPDOWN_MENU_BTN = (By.CSS_SELECTOR, 'header div div div button')
     NOTIFICATIONS_BTN = (By.CSS_SELECTOR, 'header > div > div > button:nth-child(1)')
     MESSAGES_BTN = (By.CSS_SELECTOR, 'header > div > div > button:nth-child(3)')
+    MESSAGES_NOT_EXIST = (By.XPATH, '//div/button[2]/div[@hidden]')
     LOGIN_BTN = (By.XPATH, '//header//a[@title="Войти"]')
     HEADER = (By.TAG_NAME, 'header')
     HEADER_PROJECTS_TAB = (By.XPATH, '//header//a[text()="Проекты"]')
@@ -114,11 +117,18 @@ class FooterLocators:
 class RegisterPageLocators:
     CHECKBOX_SOCIAL = (By.XPATH, '//main/div/div/div[2]/div[1]/div/div[3]/div/div[1]/div[2]/span[1]/span[1]/input')
     CHECKBOX_ABOUT = (By.XPATH, '//main/div/div/div[2]/div[1]/div/div[2]/div[1]/div[2]/span[1]/span[1]/input')
-    CHECKBOX_QUALIFIERS = (By.XPATH, "//main/div/div/div[2]/div[1]/div/div[1]/div/div/div[1]/div[2]/div/span[1]/span[1]/input")
+    CHECKBOX_QUALIFIERS = (
+    By.XPATH, "//main/div/div/div[2]/div[1]/div/div[1]/div/div/div[1]/div[2]/div/span[1]/span[1]/input")
     POSITION_FIELD = (By.CSS_SELECTOR, "input#\:rb\:")
-    ROLE_TAG_FOUNDER= (By.XPATH, "//label[@for='founder']")
+    ROLE_TAG_FOUNDER = (By.XPATH, "//label[@for='founder']")
     NEXT_STEP_BTN = (By.XPATH, "//*[@id='__next']/div[2]/main/div/div/div[2]/div[2]/div[2]/button")
     CHECKBOX_FILL_LATER = (By.XPATH, "//input[@type='checkbox']")
     CHECKBOX_FILL_LATER_2 = (By.XPATH, "//div//span//span//input[@type='checkbox']")
 
 
+class ProfilePageLocators:
+    SEND_MESSAGE_BTN = (By.CSS_SELECTOR, "div>span>button.MuiIconButton-root")
+    TEXTAREA_MESSAGE = (By.XPATH, "//textarea[@aria-invalid]")
+    USER_ACCOUNT = (By.XPATH, "//div/div/div[@id='11']")
+    USER_ACCOUNT_2 = (By.XPATH, "//div/div/div[@id='3']")
+    WRITE_MESSAGE_BTN = (By.XPATH, "//div[1]/div[2]/button/p")

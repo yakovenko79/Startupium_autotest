@@ -1,3 +1,5 @@
+import random
+
 from Startupium_project.conftest import browser
 from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.login_page import LoginPage
@@ -6,7 +8,7 @@ from Startupium_project.pages.project_page import ProjectPage
 LINK = "https://test.startupium.ru"
 EMAIL_USER = "test@te.st"
 EMAIL_PASSWORD = "Test123!"
-NAME = 'Created from autotest'
+NAME = f'Created project from autotest{random.randint(22, 100)}'
 DESCRIPTION = 'This is a autotest project'
 TAG = 'test-project'
 ABOUT = 'This is about testing'
@@ -31,6 +33,7 @@ class TestCreateNewProject:
         project_page.is_name_of_project_correct(NAME)
 
     def test_create_and_publish_new_project(self, browser):
+        """Проверка возможности создания нового проекта и его публикации"""
         page = MainPage(browser, LINK)
         page.open()
         page.go_to_login_page()
@@ -46,6 +49,9 @@ class TestCreateNewProject:
         project_page.is_name_of_project_correct(NAME)
         page.open()
         project_page.is_name_of_project_present_on_main_page(NAME)
+
+
+
 
 
 

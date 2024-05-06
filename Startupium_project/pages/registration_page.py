@@ -16,7 +16,9 @@ class RegistrationPage(BasePage):
         role_tag.click()
 
     def press_btn_next(self):
-        WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='__next']/div[2]/main/div/div/div[2]/div[2]/div[2]/button"))).click()
+        WebDriverWait(self.browser, 10).until(EC.element_to_be_clickable((By.XPATH, "//*[@id='__next']/div["
+                                                                                    "2]/main/div/div/div[2]/div["
+                                                                                    "2]/div[2]/button"))).click()
 
     def press_chkbx_later(self):
         chkbx_later = self.browser.find_element(*RegisterPageLocators.CHECKBOX_FILL_LATER)

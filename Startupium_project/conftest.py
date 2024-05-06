@@ -2,6 +2,7 @@ import pytest
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from Startupium_project.pages.locators import LoginPageLocators
 
 
 def pytest_addoption(parser):
@@ -25,3 +26,13 @@ def browser(request):
     yield browser
     print("\nquit browser..")
     browser.quit()
+
+
+# @pytest.fixture(scope="class")
+# def authorization():
+#     def _authorization(self):
+#         self.element_is_visible(self.LoginPageLocators.LOGIN_EMAIL).send_keys(self.USER_EMAIL_AUTHORIZATION)
+#         self.element_is_visible(self.LoginPageLocators.LOGIN_PASSWORD).send_keys(self.EMAIL_PASSWORD)
+#         self.element_is_visible(self.LoginPageLocators.LOGIN_BUTTON).click()
+#
+#     return _authorization

@@ -1,3 +1,4 @@
+
 import pytest
 
 from Startupium_project.pages.about_page import About
@@ -9,7 +10,10 @@ from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.project_page import ProjectPage
 from Startupium_project.pages.search_project import SearchProject
 from Startupium_project.pages.search_user import SearchUser
+from Startupium_project.pages import login_page
 
+USER_EMAIL_AUTHORIZATION = "test@te.st"
+EMAIL_PASSWORD = "Test123!"
 LINK = "https://test.startupium.ru"
 GET_URL = "https://test.startupium.ru/api/users"
 ID_PROJECT = "285"
@@ -33,12 +37,22 @@ PAGES = ["/",
          f"/project-blog/{PROJECT_ID}/articles"]
 
 
+
+
+
+
+
+
+
 @pytest.mark.regression
 class TestMainPage:
 
-    def test_find_project_page_redirect_329(self, browser):
+    def test_find_project_page_redirect_329(self, browser, authorization):
         page = MainPage(browser, LINK)
         page.open()
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.go_to_login_page()
+        authorization(self)
         search_page = SearchProject(browser, browser.current_url)
         search_page.go_to_find_project_page()
         search_page.should_be_search_project_url()
