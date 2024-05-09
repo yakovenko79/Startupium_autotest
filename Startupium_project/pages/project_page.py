@@ -1,6 +1,6 @@
 import time
 from Startupium_project.pages.base_page import BasePage
-from Startupium_project.pages.locators import MainPageLocators, CreateNewProjectLocators
+from Startupium_project.pages.locators import MainPageLocators, CreateNewProjectLocators, ProjectPageLocators
 
 
 class ProjectPage(BasePage):
@@ -61,3 +61,10 @@ class ProjectPage(BasePage):
         self.browser.set_page_load_timeout(5)
         project_title = self.browser.find_element(*CreateNewProjectLocators.NAME_PROJECT_CARD).text
         assert project_title == name, "Takogo proekta net"
+
+    def write_comment_about_project(self):
+        comment_field = self.browser.find_element(*ProjectPageLocators.COMMENT_FIELD)
+        comment_field.send_keys("New message from me")
+        send_key = self.browser.find_element(*ProjectPageLocators.SEND_COMMENT_BTN)
+        send_key.click()
+

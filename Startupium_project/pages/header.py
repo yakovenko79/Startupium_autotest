@@ -59,7 +59,7 @@ class Header(BasePage):
     def should_messages_list_is_empty(self):
         pass
 
-    def is_not_new_messages(self):
+    def are_not_new_messages(self):
         assert self.is_element_present(*HeaderLocators.MESSAGES_NOT_EXIST), "User has new message"
 
     def are_new_messages(self):
@@ -80,5 +80,40 @@ class Header(BasePage):
         time.sleep(1)
         close_messages_modal = self.browser.find_element(*HeaderLocators.CLOSE_MODAL)
         close_messages_modal.click()
+
+    def are_new_notifications(self):
+        assert self.is_not_element_present(*HeaderLocators.NOTIFICATIONS_NOT_EXIST), "Новые уведомления не получены"
+
+    def go_to_new_notifications(self):
+        notification_btn = self.browser.find_element(*HeaderLocators.NOTIFICATIONS_BTN)
+        notification_btn.click()
+
+    def is_notification_on_alert(self):
+        """Проверка того, что алерт уведомлений содержит сообщение"""
+        self.is_element_present(*HeaderLocators.PROFILE_NAME_ON_ALERT)
+        self.is_element_present(*HeaderLocators.MESSAGE_ON_ALERT)
+        self.is_element_present(*HeaderLocators.REMOVE_ALL_NOTIFICATIONS_ALERT_BTN)
+        self.is_element_present(*HeaderLocators.MARK_AS_WRITTEN_ALERT_BTN)
+
+    def mark_as_written_notifications(self):
+        """Отметить сообщения как прочитанные"""
+
+        mark_btn = self.browser.find_element(*HeaderLocators.MARK_AS_WRITTEN_ALERT_BTN)
+        mark_btn.click()
+        self.is_element_present(*HeaderLocators.NOTIFICATIONS_NOT_EXIST), "Остались непрочитанные уведомления"
+        self.is_not_element_present(*HeaderLocators.MARK_AS_WRITTEN_ALERT_BTN)
+
+    def remove_all_commetns_in_alert(self):
+        """Удаление уведомлений из алерта и проверка, что все удалены"""
+        remove_notifications = self.browser.find_element(*HeaderLocators.REMOVE_ALL_NOTIFICATIONS_ALERT_BTN)
+        remove_notifications.click()
+        self.is_not_element_present(*HeaderLocators.MESSAGE_ON_ALERT)
+        assert self.browser.find_element(*HeaderLocators.MESSAGE_ON_ALERT_HAVENT_NOTIFICATIONS).text == "Нет новых уведомлений", "Уведомления не удалены"
+
+
+
+
+
+
 
 

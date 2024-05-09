@@ -64,6 +64,11 @@ class CreateNewProjectLocators():
     NAME_PROJECT_CARD = (By.CSS_SELECTOR, 'div>div>div>h2')
 
 
+class ProjectPageLocators:
+    SEND_COMMENT_BTN = (By.CSS_SELECTOR, 'form>div>div>div>button')
+    COMMENT_FIELD = (By.CSS_SELECTOR, 'form>div>div>input')
+
+
 class SearchProjectLocators():
     SEARCH_PROJECT_BTN = (By.XPATH, "/html/body/div[1]/div[2]/main/section[1]/div/a[2]")
     SEARCH_PROJECT_FIELD = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/form/div/div[2]/div[1]/div/div/div/input')
@@ -76,10 +81,16 @@ class SearchProjectLocators():
 
 
 class HeaderLocators:
+    PROFILE_NAME_ON_ALERT = (By.XPATH, '//a[@href="/profile/11"]')
+    MESSAGE_ON_ALERT = (By.XPATH, '//p[text()=" оставил(а) комментарий в вашем проекте "]')
+    REMOVE_ALL_NOTIFICATIONS_ALERT_BTN = (By.XPATH, '//button/p[text()="Удалить все"]')
+    MARK_AS_WRITTEN_ALERT_BTN = (By.XPATH, "//button/p[text()='Отметить как прочитанные']")
+    MESSAGE_ON_ALERT_HAVENT_NOTIFICATIONS = (By.CSS_SELECTOR, "header>div>div>div>div>div span")
     CLOSE_MODAL = (By.CSS_SELECTOR, 'div.MuiBox-root>div.MuiBox-root>div.MuiBox-root>div.MuiBox-root>button')
     LOGOUT_BTN = (By.XPATH, '//div/ul/li[6]')
     DROPDOWN_MENU_BTN = (By.CSS_SELECTOR, 'header div div div button')
     NOTIFICATIONS_BTN = (By.CSS_SELECTOR, 'header > div > div > button:nth-child(1)')
+    NOTIFICATIONS_NOT_EXIST = (By.XPATH, '//div/button[1]/div[@hidden]')
     MESSAGES_BTN = (By.CSS_SELECTOR, 'header > div > div > button:nth-child(3)')
     MESSAGES_NOT_EXIST = (By.XPATH, '//div/button[2]/div[@hidden]')
     LOGIN_BTN = (By.XPATH, '//header//a[@title="Войти"]')
@@ -118,7 +129,7 @@ class RegisterPageLocators:
     CHECKBOX_SOCIAL = (By.XPATH, '//main/div/div/div[2]/div[1]/div/div[3]/div/div[1]/div[2]/span[1]/span[1]/input')
     CHECKBOX_ABOUT = (By.XPATH, '//main/div/div/div[2]/div[1]/div/div[2]/div[1]/div[2]/span[1]/span[1]/input')
     CHECKBOX_QUALIFIERS = (
-    By.XPATH, "//main/div/div/div[2]/div[1]/div/div[1]/div/div/div[1]/div[2]/div/span[1]/span[1]/input")
+        By.XPATH, "//main/div/div/div[2]/div[1]/div/div[1]/div/div/div[1]/div[2]/div/span[1]/span[1]/input")
     POSITION_FIELD = (By.CSS_SELECTOR, "input#\:rb\:")
     ROLE_TAG_FOUNDER = (By.XPATH, "//label[@for='founder']")
     NEXT_STEP_BTN = (By.XPATH, "//*[@id='__next']/div[2]/main/div/div/div[2]/div[2]/div[2]/button")

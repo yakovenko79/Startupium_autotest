@@ -12,8 +12,8 @@ def check_decreasing(arr):
 
 
 class MainPage(BasePage):
-    def __init__(self, *args, **kwargs):
-        super(MainPage, self).__init__(*args, **kwargs)
+    # def __init__(self, *args, **kwargs):
+    #     super(MainPage, self).__init__(*args, **kwargs)
 
     def description_conforms_requirements(self):
         """Проверка соответствия надписи обложки главной страницы требованиям"""
@@ -101,5 +101,9 @@ class MainPage(BasePage):
         """Переход на страницу профиля с карточки профиля главной страницы"""
         profile_card = self.browser.find_element(By.XPATH, "//a[@href='/profile/11']")
         ActionChains(self.browser).move_to_element(profile_card).click().perform()
+
+    def go_to_project_from_card(self):
+        project_card = self.browser.find_element(By.XPATH, "//a[@href='/project/created-from-autotest']")
+        ActionChains(self.browser).move_to_element(project_card).click().perform()
 
 
