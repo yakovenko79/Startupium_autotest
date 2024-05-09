@@ -13,6 +13,7 @@ Starupium_project проект автоматизации тестировани
    footer.py - футер<br>
    header.py -  хедер<br>
    locators.py - селекторы<br>
+   profile_page.py - страница профиля<br>
    project_page.py - страница создания проекта<br>
    search_user.py - страница поиска пользователей<br>
    registration_page.py - страница ввода регистрационых данных<br>
@@ -21,6 +22,7 @@ Starupium_project проект автоматизации тестировани
      - test_create_new_project_into_draft - тестирование возможности создания черновика проекта используя валидные данные
      - test_create_and_publish_new_project - тестирование возможности создания и публикации проекта используя валидные данные 
 - test_main_page.py - тестирование главной страницы из тест-сьюта регрессионного тестирования (будет пополняться)<br>
+- test_main_page_authorized.py - тестирование главной страницы из тест-сьюта регрессионного тестирования<br>
 - test_search_project.py - тестирование возможности поиска проекта<br>
      - test_search_project_unauthorized_user - тестирование возможности поиска проекта неавторизованным пользователем<br>
 - requirements.txt - зависимости
