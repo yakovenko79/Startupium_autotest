@@ -1,7 +1,7 @@
 import time
 
 from Startupium_project.pages.base_page import BasePage
-from Startupium_project.pages.locators import ProfilePageLocators
+from Startupium_project.pages.locators import ProfilePageLocators, MainPageLocators
 
 
 class Profile(BasePage):
@@ -20,5 +20,16 @@ class Profile(BasePage):
         time.sleep(2)
         send_message_btn = self.browser.find_element(*ProfilePageLocators.SEND_MESSAGE_BTN)
         send_message_btn.click()
+
+    def should_profile_data_correspond_card_data(self):
+        """Проверка соответствия имени карточки пользователя и должности в карточке имени пользователя и должности в
+        профиле"""
+        profile_name = self.browser.find_element(*ProfilePageLocators.PROFILE_NAME)
+        assert profile_name.text == "testtest", "Имя не соответствует"
+        profile_job_title = self.browser.find_element(*ProfilePageLocators.PROFILE_JOB_NAME)
+        assert profile_job_title.text == "fgfg", "Должность не соответствует"
+
+
+
 
 

@@ -48,6 +48,8 @@ PAGES = ["/",
 class TestMainPage:
 
     def test_find_project_page_redirect_329(self, browser, authorization):
+        """Проверка перехода на страницу поиска проектов при нажатии на кнопку 'Найти проект' обложки главной
+        страницы для неавторизованного пользователя"""
         page = MainPage(browser, LINK)
         page.open()
         login_page = LoginPage(browser, browser.current_url)
@@ -56,8 +58,11 @@ class TestMainPage:
         search_page = SearchProject(browser, browser.current_url)
         search_page.go_to_find_project_page()
         search_page.should_be_search_project_url()
+        search_page.should_be_search_project_page()
 
-    def test_create_project_page_redirect_339(self, browser):
+    def test_redirect_to_login_page_after_press_create_crew_btn_339(self, browser):
+        """Проверка перехода на страницу авторизации при нажатии на кнопку 'Собрать команду' обложки главной страницы
+        для неавторизованного пользователя"""
         page = MainPage(browser, LINK)
         page.open()
         project_page = ProjectPage(browser, browser.current_url)
@@ -175,6 +180,7 @@ class TestMainPage:
         page.title_conforms_requirements()
 
     def test_header_present_on_each_page_unauth_330(self, browser):
+        """Хедер присутствует на всех страницах приложения"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)
@@ -188,6 +194,7 @@ class TestMainPage:
             header.should_login_button()
 
     def test_footer_present_on_each_page_unauth_343(self, browser):
+        """Футер присутствует на всех страницах приложения"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)

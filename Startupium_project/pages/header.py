@@ -97,7 +97,6 @@ class Header(BasePage):
 
     def mark_as_written_notifications(self):
         """Отметить сообщения как прочитанные"""
-
         mark_btn = self.browser.find_element(*HeaderLocators.MARK_AS_WRITTEN_ALERT_BTN)
         mark_btn.click()
         self.is_element_present(*HeaderLocators.NOTIFICATIONS_NOT_EXIST), "Остались непрочитанные уведомления"

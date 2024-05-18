@@ -6,7 +6,8 @@ from Startupium_project.pages.locators import MainPageLocators, CreateNewProject
 class ProjectPage(BasePage):
 
     def should_be_project_url(self):
-        assert "project" in self.browser.current_url, "you're not on project page"
+        time.sleep(2)
+        assert "/project/" in self.browser.current_url, "you're not on project page"
 
     def go_to_project_page(self):
         btn_create_crew = self.browser.find_element(*MainPageLocators.CREATE_CREW_BUTTON)
@@ -68,3 +69,12 @@ class ProjectPage(BasePage):
         send_key = self.browser.find_element(*ProjectPageLocators.SEND_COMMENT_BTN)
         send_key.click()
 
+    def should_project_data_correspond_card_data(self):
+        project_name = self.browser.find_element(*ProjectPageLocators.NAME_PROJECT_CARD)
+        amount_comments_in_project = self.browser.find_element(*ProjectPageLocators.AMOUNT_COMMENTS_IN_TITLE).text
+        number_of_comments = amount_comments_in_project.split()[0]
+
+        assert project_name.text == "Created from autotest", "Это не то название проекта"
+        print("amount comments = ", amount_comments_in_cards)
+        print("amount in project page = ", number_of_comments)
+        assert amount_comments_in_cards == number_of_comments, "Количество комментариев отличается"

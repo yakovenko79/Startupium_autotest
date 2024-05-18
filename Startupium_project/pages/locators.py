@@ -18,6 +18,8 @@ class MainPageLocators():
                   "a.MuiTypography-root.MuiTypography-inherit.MuiLink-root.MuiLink-underlineAlways.css-mss1w8 > span")
     CREATE_CREW_BUTTON = (By.XPATH, '//*[@id="__next"]/div[2]/main/section[1]/div/a[1]')
     LIST_LINKS_CARDS = (By.CSS_SELECTOR, "div >div > div > a[href]")
+    PROFILE_CARD_NAME = (By.XPATH, '//a[@href="/profile/11"]//div/span[1]')
+    AMOUNT_COMMENTS_IN_CARD = (By.XPATH, "//a[@href='/project/created-from-autotest']/div/div/div[2]/div/div[2]/span")
 
 
 class LoginPageLocators():
@@ -65,6 +67,8 @@ class CreateNewProjectLocators():
 
 
 class ProjectPageLocators:
+    AMOUNT_COMMENTS_IN_TITLE = (By.XPATH, '//h2[text()[contains(.,"комментариев")]]')
+    NAME_PROJECT_CARD = (By.CSS_SELECTOR, 'div>h2')
     SEND_COMMENT_BTN = (By.CSS_SELECTOR, 'form>div>div>div>button')
     COMMENT_FIELD = (By.CSS_SELECTOR, 'form>div>div>input')
 
@@ -138,6 +142,8 @@ class RegisterPageLocators:
 
 
 class ProfilePageLocators:
+    PROFILE_JOB_NAME = (By.CSS_SELECTOR, "h1 span:last-child")
+    PROFILE_NAME = (By.CSS_SELECTOR, "h1 span:first-child")
     SEND_MESSAGE_BTN = (By.CSS_SELECTOR, "div>span>button.MuiIconButton-root")
     TEXTAREA_MESSAGE = (By.XPATH, "//textarea[@aria-invalid]")
     USER_ACCOUNT = (By.XPATH, "//div/div/div[@id='11']")

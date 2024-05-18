@@ -4,7 +4,7 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
 from .base_page import BasePage
-from .locators import MainPageLocators
+from .locators import MainPageLocators, ProjectPageLocators
 
 
 def check_decreasing(arr):
@@ -19,10 +19,11 @@ class MainPage(BasePage):
         """Проверка соответствия надписи обложки главной страницы требованиям"""
         assert self.browser.find_element(
             *MainPageLocators.DESCRIPTION).text == ("Здесь можно найти команду для стартапа, присоединиться к уже "
-                                                    "существующему проекту, найти инвестора и партнёра"), ("Description "
-                                                                                                         "is "
-                                                                                                         "different "
-                                                                                                         "or absent")
+                                                    "существующему проекту, найти инвестора и партнёра"), (
+            "Description "
+            "is "
+            "different "
+            "or absent")
 
     def title_conforms_requirements(self):
         """Проверка соответствия заголовка главной страницы требованиям"""
@@ -38,7 +39,7 @@ class MainPage(BasePage):
         time.sleep(1)
 
     def should_only_profile_cards_ui(self):
-        """Проверка того, что только карточки профилей """
+        """Проверка того, что на странице отображаются только карточки профилей """
         posts = self.browser.find_elements(*MainPageLocators.LIST_LINKS_CARDS)
         links = [post.get_attribute("href") for post in posts]
         for link in links:
@@ -63,7 +64,6 @@ class MainPage(BasePage):
 
     def get_name_profile_card_from_ui(self):
         """Получение имен пользователей из карточек на UI"""
-
         l, i = [], 1
         while True:
             try:
@@ -77,7 +77,6 @@ class MainPage(BasePage):
 
     def get_name_profile_profile_from_api(self):
         """Получение имен пользователей из карточек в json"""
-
         url = "https://test.startupium.ru/api/users"
         response = requests.get(url)
         js = response.json()
@@ -87,8 +86,9 @@ class MainPage(BasePage):
             fname = js['data'][i]['firstname']
             lname = js['data'][i]['lastname']
             print('fname', type(fname))
-            print('lname',type(lname))
-            name = (str(str(fname) if fname is not None else '')  + " " + str(str(lname) if lname is not None else "")).rstrip()
+            print('lname', type(lname))
+            name = (str(str(fname) if fname is not None else '') + " " + str(
+                str(lname) if lname is not None else "")).rstrip()
             l.append(name)
         print("api names ", l)
         return l
@@ -105,5 +105,17 @@ class MainPage(BasePage):
     def go_to_project_from_card(self):
         project_card = self.browser.find_element(By.XPATH, "//a[@href='/project/created-from-autotest']")
         ActionChains(self.browser).move_to_element(project_card).click().perform()
+
+    def go_to_project_from_card_and_compare(self):
+        amount_comments_in_card = self.browser.find_element(*MainPageLocators.AMOUNT_COMMENTS_IN_CARD).text
+        project_card = self.browser.find_element(By.XPATH, "//a[@href='/project/created-from-autotest']")
+        ActionChains(self.browser).move_to_element(project_card).click().perform()
+        time.sleep(2)
+        assert "/project/" in self.browser.current_url, "you're not on project page"
+        project_name = self.browser.find_element(*ProjectPageLocators.NAME_PROJECT_CARD)
+        amount_comments_in_project = self.browser.find_element(*ProjectPageLocators.AMOUNT_COMMENTS_IN_TITLE).text
+        number_of_comments = amount_comments_in_project.split()[0]
+        assert project_name.text == "Created from autotest", "Это не то название проекта"
+        assert amount_comments_in_card == number_of_comments, "Количество комментариев отличается"
 
 
