@@ -13,6 +13,41 @@ EMAIL_USER_2 = "example@ex.le"
 
 link = "https://test.startupium.ru"
 
+# ID_PROJECT = "71"
+SLUG = "new-project"
+PROJECT_ARTICLE_SLUG = "new-new-project-article"
+PROFILE_ARTICLE_SLUG = "new-project-blog-article"
+ARTICLE_SLUG = "autotest"
+# USERID = "2"
+PROJECT_ID = "71"
+PROFILE_ID = "3"
+PAGES = ["/",
+         "/projects",
+         "/users",
+         "/articles",
+         "/about",
+         "/login",
+         "/create-account",
+         "/terms_of_service",
+         "/policy",
+         f"/project/{SLUG}",
+         f"/profile/{PROFILE_ID}",
+         "/new-project",
+         "/my-projects",
+         "/my-drafts",
+         "/my-bookmarks",
+         "/account-settings",
+         "/password_recovery",
+         "/registration",
+         "/edit-project",
+         f"/project-management/chat?id={PROJECT_ID}",
+         f"/project-management/team?id={PROJECT_ID}",
+         f"/project-management/wiki?id={PROJECT_ID}",
+         f"/project-blog/{PROJECT_ID}/article/{PROJECT_ARTICLE_SLUG}",
+         f'/profile-blog/{PROFILE_ID}/article/{PROFILE_ARTICLE_SLUG}',
+         f"/project-blog/{PROJECT_ID}/articles",
+         f"/profile-blog/{PROFILE_ID}/articles"]
+
 
 @pytest.mark.authorized
 class TestMainPageAuth:
@@ -103,3 +138,42 @@ class TestMainPageAuth:
         head.is_user_logged_in()
         project_card = MainPage(browser, browser.current_url)
         project_card.go_to_project_from_card_and_compare()
+
+    def test_go_to_main_page_by_click_logo_362(self, browser):
+        """Проверка перехода на главную страницу приложения Startupium при клике на логотип Startupium в Header с
+        любой страницы приложения авторизованным пользователем."""
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.should_be_login_url()
+        login_page.input_login_credentials(EMAIL_USER, EMAIL_PASSWORD)
+        head = Header(browser, browser.current_url)
+        head.is_user_logged_in()
+        for endpoint in PAGES:
+            address = f'{link}{endpoint}'
+            page = MainPage(browser, address)
+            page.open()
+            header = Header(browser, browser.current_url)
+            header.press_logo()
+            header.is_this_main_page(link)
+
+    def test_open_drafts_page_from_action_menu_369(self, browser):
+        """Проверка открытия страницы черновиков пользователя при переходе по ссылке 'Черновики' меню действий в
+        Header авторизованным пользователем."""
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.should_be_login_url()
+        login_page.input_login_credentials(EMAIL_USER, EMAIL_PASSWORD)
+        head = Header(browser, browser.current_url)
+        head.is_user_logged_in()
+        head.open_action_menu()
+        head.go_to_drafts_from_action_menu()
+        head.should_this_drafts_page()
+
+    def test_open_profile_page_from_action_menu_367(self, browser):
+        """Проверка открытия страницы профиля при переходе по ссылке 'Профиль' меню действий."""
+        login_page = LoginPage(browser, browser.current_url)
+        login_page.should_be_login_url()
+        login_page.input_login_credentials(EMAIL_USER, EMAIL_PASSWORD)
+        head = Header(browser, browser.current_url)
+        head.is_user_logged_in()
+        head.open_action_menu()
+        head.go_to_profile_from_action_menu()
+        head.should_this_profile_page(PROFILE_ID)

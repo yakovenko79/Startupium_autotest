@@ -75,6 +75,6 @@ class ProjectPage(BasePage):
         number_of_comments = amount_comments_in_project.split()[0]
 
         assert project_name.text == "Created from autotest", "Это не то название проекта"
-        print("amount comments = ", amount_comments_in_cards)
+        print("amount comments = ", amount_comments_in_project)
         print("amount in project page = ", number_of_comments)
-        assert amount_comments_in_cards == number_of_comments, "Количество комментариев отличается"
+        assert amount_comments_in_project == number_of_comments, "Количество комментариев отличается"

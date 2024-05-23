@@ -1,7 +1,11 @@
 import time
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+
 from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.locators import HeaderLocators, ProfilePageLocators
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class Header(BasePage):
@@ -9,7 +13,7 @@ class Header(BasePage):
     def press_logo(self):
         logo = self.browser.find_element(*HeaderLocators.LOGO_STARTUPIUM)
         logo.click()
-        time.sleep(3)
+        time.sleep(1)
 
     def is_this_main_page(self, link):
         assert link == self.browser.current_url[:-1], "This is not a main page"
@@ -26,7 +30,8 @@ class Header(BasePage):
         assert self.is_element_present(*HeaderLocators.HEADER_PROJECTS_TAB)
 
     def should_this_tab_change_color_after_click(self, tab):
-        assert self.is_element_present(*HeaderLocators.get_header_tab_after_click(tab)), "Don't change color of another tab"
+        assert self.is_element_present(
+            *HeaderLocators.get_header_tab_after_click(tab)), "Don't change color of another tab"
 
     def press_user_tab(self, tab):
         user_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
@@ -107,12 +112,33 @@ class Header(BasePage):
         remove_notifications = self.browser.find_element(*HeaderLocators.REMOVE_ALL_NOTIFICATIONS_ALERT_BTN)
         remove_notifications.click()
         self.is_not_element_present(*HeaderLocators.MESSAGE_ON_ALERT)
-        assert self.browser.find_element(*HeaderLocators.MESSAGE_ON_ALERT_HAVENT_NOTIFICATIONS).text == "Нет новых уведомлений", "Уведомления не удалены"
+        assert self.browser.find_element(
+            *HeaderLocators.MESSAGE_ON_ALERT_HAVENT_NOTIFICATIONS).text == "Нет новых уведомлений", "Уведомления не удалены"
 
+    def open_action_menu(self):
+        element = WebDriverWait(self.browser, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'header div:nth-child(4) div button'))
+        )
+        element.click()
+        time.sleep(1)
 
+    def go_to_drafts_from_action_menu(self):
+        profile = WebDriverWait(self.browser, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(3)'))
+        )
+        profile.click()
 
+    def should_this_drafts_page(self):
+        self.browser.set_page_load_timeout(3)
+        assert "/my-drafts" in self.browser.current_url, "Это не страница черновиков"
+        assert self.is_element_present(*HeaderLocators.DRAFT_HEADER), "Это не страница черновиков"
 
+    def go_to_profile_from_action_menu(self):
+        profile = WebDriverWait(self.browser, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(1)'))
+        )
+        profile.click()
 
-
-
-
+    def should_this_profile_page(self, profile_id):
+        time.sleep(2)
+        assert f"profile/{profile_id}" in self.browser.current_url, "Это не страница профиля"

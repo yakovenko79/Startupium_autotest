@@ -1,4 +1,3 @@
-
 import pytest
 
 from Startupium_project.pages.about_page import About
@@ -16,11 +15,11 @@ USER_EMAIL_AUTHORIZATION = "test@te.st"
 EMAIL_PASSWORD = "Test123!"
 LINK = "https://test.startupium.ru"
 GET_URL = "https://test.startupium.ru/api/users"
-ID_PROJECT = "285"
+ID_PROJECT = "71"
 SLUG = "new-project"
-ARTICLE_SLUG = "autotest-article"
-USERID = "285"
-PROJECT_ID = "69"
+ARTICLE_SLUG = "new-project-blog-article"
+USERID = "3"
+PROJECT_ID = "71"
 PAGES = ["/",
          "/projects",
          "/users",
@@ -35,13 +34,6 @@ PAGES = ["/",
          f'/profile-blog/{USERID}/article/{ARTICLE_SLUG}',
          f"/profile/{USERID}",
          f"/project-blog/{PROJECT_ID}/articles"]
-
-
-
-
-
-
-
 
 
 @pytest.mark.regression
@@ -73,6 +65,8 @@ class TestMainPage:
         login_page.should_be_login_password()
 
     def test_go_to_main_page_by_click_logo_unauthorized_335(self, browser):
+        """Проверка перехода на главную страницу приложения Startupium при клике на логотип Startupium в Header с
+        любой страницы приложения неавторизованным пользователем."""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)

@@ -85,6 +85,10 @@ class SearchProjectLocators():
 
 
 class HeaderLocators:
+    PROFILE_ACTION_MENU_BTN = (By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(1)')
+    DRAFT_HEADER = (By.XPATH, '//h2[text()="Черновики"]')
+    DRAFTS_ACTION_MENU_BTN = (By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(3)')
+    ACTION_MENU_BTN = (By.CSS_SELECTOR, 'header div:nth-child(4) div button')
     PROFILE_NAME_ON_ALERT = (By.XPATH, '//a[@href="/profile/11"]')
     MESSAGE_ON_ALERT = (By.XPATH, '//p[text()=" оставил(а) комментарий в вашем проекте "]')
     REMOVE_ALL_NOTIFICATIONS_ALERT_BTN = (By.XPATH, '//button/p[text()="Удалить все"]')
