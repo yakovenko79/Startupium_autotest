@@ -116,6 +116,7 @@ class Header(BasePage):
             *HeaderLocators.MESSAGE_ON_ALERT_HAVENT_NOTIFICATIONS).text == "Нет новых уведомлений", "Уведомления не удалены"
 
     def open_action_menu(self):
+        """Открытие меню действий"""
         element = WebDriverWait(self.browser, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'header div:nth-child(4) div button'))
         )
@@ -123,22 +124,26 @@ class Header(BasePage):
         time.sleep(1)
 
     def go_to_drafts_from_action_menu(self):
+        """переход на страницу черновиков из меню действий"""
         profile = WebDriverWait(self.browser, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(3)'))
         )
         profile.click()
 
     def should_this_drafts_page(self):
+        """проверка того, что открыта страница черновиков"""
         self.browser.set_page_load_timeout(3)
         assert "/my-drafts" in self.browser.current_url, "Это не страница черновиков"
         assert self.is_element_present(*HeaderLocators.DRAFT_HEADER), "Это не страница черновиков"
 
     def go_to_profile_from_action_menu(self):
+        """переход на страницу профиля из меню действий"""
         profile = WebDriverWait(self.browser, 10).until(
             EC.element_to_be_clickable((By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(1)'))
         )
         profile.click()
 
     def should_this_profile_page(self, profile_id):
+        """проверка того, что открыта страница профиля"""
         time.sleep(2)
         assert f"profile/{profile_id}" in self.browser.current_url, "Это не страница профиля"
