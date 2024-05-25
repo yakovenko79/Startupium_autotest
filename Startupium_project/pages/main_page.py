@@ -12,6 +12,7 @@ def check_decreasing(arr):
 
 
 class MainPage(BasePage):
+    # это заглушка на случай, если все функции будут перенесены в другие файлы
     # def __init__(self, *args, **kwargs):
     #     super(MainPage, self).__init__(*args, **kwargs)
 
@@ -101,12 +102,15 @@ class MainPage(BasePage):
         """Переход на страницу профиля с карточки профиля главной страницы"""
         profile_card = self.browser.find_element(By.XPATH, "//a[@href='/profile/11']")
         ActionChains(self.browser).move_to_element(profile_card).click().perform()
+        time.sleep(2)
 
     def go_to_project_from_card(self):
-        project_card = self.browser.find_element(By.XPATH, "//a[@href='/project/created-from-autotest']")
+        """Переход на страницу проекта с карточки проекта"""
+        project_card = self.browser.find_element(By.XPATH, "//a[@href='/project/created-project-from-autotest']")
         ActionChains(self.browser).move_to_element(project_card).click().perform()
 
     def go_to_project_from_card_and_compare(self):
+        """Переход на страницу проекта и сравнение"""
         amount_comments_in_card = self.browser.find_element(*MainPageLocators.AMOUNT_COMMENTS_IN_CARD).text
         project_card = self.browser.find_element(By.XPATH, "//a[@href='/project/created-from-autotest']")
         ActionChains(self.browser).move_to_element(project_card).click().perform()
@@ -117,5 +121,21 @@ class MainPage(BasePage):
         number_of_comments = amount_comments_in_project.split()[0]
         assert project_name.text == "Created from autotest", "Это не то название проекта"
         assert amount_comments_in_card == number_of_comments, "Количество комментариев отличается"
+
+    def open_other_cards(self):
+        """Нажатие кнопки смотреть еще"""
+        see_else_btn = self.browser.find_element(*MainPageLocators.SEE_ELSE_BTN)
+        see_else_btn.click()
+        time.sleep(2)
+
+    def go_to_the_project_card(self):
+        """Поиск конкретной карточки проекта, если ее нет, то нажимается кнопка смотреть еще"""
+        while True:
+            if self.is_not_element_present(*MainPageLocators.CREATED_PROJECT_CARD):
+                see_else_btn = self.browser.find_element(*MainPageLocators.SEE_ELSE_BTN)
+                see_else_btn.click()
+                time.sleep(2)
+            else:
+                break
 
 

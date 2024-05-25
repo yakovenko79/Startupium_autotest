@@ -15,6 +15,7 @@ def browser(request):
     browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
         options = Options()
+        options.add_argument('--start-maximized')
         print("\nstart chrome browser for test..")
         browser = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
@@ -27,12 +28,3 @@ def browser(request):
     print("\nquit browser..")
     browser.quit()
 
-
-# @pytest.fixture(scope="class")
-# def authorization():
-#     def _authorization(self):
-#         self.element_is_visible(self.LoginPageLocators.LOGIN_EMAIL).send_keys(self.USER_EMAIL_AUTHORIZATION)
-#         self.element_is_visible(self.LoginPageLocators.LOGIN_PASSWORD).send_keys(self.EMAIL_PASSWORD)
-#         self.element_is_visible(self.LoginPageLocators.LOGIN_BUTTON).click()
-#
-#     return _authorization

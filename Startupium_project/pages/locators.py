@@ -9,6 +9,8 @@ header_tabs = {
 
 
 class MainPageLocators():
+    SEE_ELSE_BTN = (By.XPATH, '//button/p[text()="Смотреть еще"]')
+    CREATED_PROJECT_CARD = (By.XPATH, "//a[@href='/project/created-from-autotest']")
     HEADER_NEW = (By.CSS_SELECTOR, 'section h2')
     TEXT_BTN_PROFILES = (By.XPATH, '//ul/li[text()="Профили"]')
     TITLE = (By.CSS_SELECTOR, "section > h1")
@@ -23,7 +25,6 @@ class MainPageLocators():
 
 
 class LoginPageLocators():
-    IS_LOGGED_IN = None
     LOGIN_EMAIL = (By.XPATH, '//input[@placeholder="Введите email"]')
     LOGIN_PASSWORD = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/div/form/ul/li[2]/div/div/div[2]/div/input')
     LOGIN_BUTTON = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/div/div/form/button')
@@ -80,11 +81,12 @@ class SearchProjectLocators():
     SEARCH_BY_NAME_CHECKBOX = (By.XPATH, '/html/body/div[3]/div[3]/ul/li[2]/span[1]/input')
     SEARCH_SUBMIT = (By.XPATH, '/html/body/div[1]/div[2]/main/div/div/form/div/div[2]/div/div/button')
     STRANGE_CLOSE_LIST_CHECKBOX = (By.XPATH, '/html/body/div[3]/div[1]')
-    HEADER_H2 = (By.CSS_SELECTOR, 'h2')
+    HEADER_H2 = (By.XPATH, "//div/a[@href='/project/created-from-autotest']//h2")
     SEARCH_PROJECT_TITLE = (By.XPATH, '//span[text()="Поиск проектов"]')
 
 
 class HeaderLocators:
+    I_AM_FOUNDER = (By.XPATH, '//h2[text()="Я основатель"]')
     PROFILE_ACTION_MENU_BTN = (By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(1)')
     DRAFT_HEADER = (By.XPATH, '//h2[text()="Черновики"]')
     DRAFTS_ACTION_MENU_BTN = (By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(3)')
@@ -122,6 +124,10 @@ class HeaderLocators:
 
 
 class FooterLocators:
+    TERMS_GOOGLE_LINK = (By.XPATH, "//a[@href='https://policies.google.com/terms']")
+    PRIVACY_GOOGLE_LINK = (By.XPATH, "//a[@href='https://policies.google.com/privacy']")
+    POLICY_STARTUPIUM_TITLE = (By.XPATH, "//h4[text()='Политика в отношении обработки персональных данных']")
+    POLICY = (By.XPATH, "//a[@href='/policy']")
     PRIVACY = (By.CSS_SELECTOR, 'footer div:last-child')
     FOOTER_FOOTER = (By.CSS_SELECTOR, "footer")
     USERS_TAB = (By.CSS_SELECTOR, 'footer li:nth-child(2) > a')

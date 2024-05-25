@@ -8,6 +8,7 @@ from Startupium_project.pages.base_page import BasePage
 
 class SearchUser(BasePage):
     def should_be_search_user_page_url(self):
+        """Проверка того, что адрес страницы соответствует адресу страницы поиска пользователей"""
         WebDriverWait(self.browser, 10).until(ec.presence_of_element_located((By.XPATH, '//h1[text()="Поиск пользователей"]')))
         assert "users" in self.browser.current_url, "you're not on search user page"
 

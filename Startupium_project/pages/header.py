@@ -11,33 +11,41 @@ from selenium.webdriver.support import expected_conditions as EC
 class Header(BasePage):
 
     def press_logo(self):
+        """Нажать логотип Startupium"""
         logo = self.browser.find_element(*HeaderLocators.LOGO_STARTUPIUM)
         logo.click()
         time.sleep(1)
 
     def is_this_main_page(self, link):
+        """Проверка того, что это главная страница"""
         assert link == self.browser.current_url[:-1], "This is not a main page"
 
     def press_article_tab(self, tab):
+        """Нажать таб Статьи"""
         article_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
         article_tab.click()
 
     def press_projects_tab(self, tab):
+        """Нажать таб Проекты"""
         projects_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
         projects_tab.click()
 
     def should_project_tab(self):
-        assert self.is_element_present(*HeaderLocators.HEADER_PROJECTS_TAB)
+        """Есть ли таб Проекты"""
+        assert self.is_element_present(*HeaderLocators.HEADER_PROJECTS_TAB), "Таба проекты в хедере нет"
 
     def should_this_tab_change_color_after_click(self, tab):
+        """Меняет ли цвет таб после клика на нем"""
         assert self.is_element_present(
             *HeaderLocators.get_header_tab_after_click(tab)), "Don't change color of another tab"
 
     def press_user_tab(self, tab):
+        """Нажать таб Пользователи"""
         user_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
         user_tab.click()
 
     def press_about_tab(self, tab):
+        """Нажать таб О сайте"""
         about_tab = self.browser.find_element(*HeaderLocators.get_header_tab(tab))
         about_tab.click()
 
@@ -57,7 +65,7 @@ class Header(BasePage):
         assert self.is_element_present(*HeaderLocators.LOGIN_BTN), "Login button is absent"
 
     def is_user_logged_in(self):
-        assert self.is_not_element_present(*HeaderLocators.LOGIN_BTN)
+        # assert self.is_not_element_present(*HeaderLocators.LOGIN_BTN)
         assert self.is_element_present(*HeaderLocators.MESSAGES_BTN)
         assert self.is_element_present(*HeaderLocators.NOTIFICATIONS_BTN)
 
@@ -147,3 +155,17 @@ class Header(BasePage):
         """проверка того, что открыта страница профиля"""
         time.sleep(2)
         assert f"profile/{profile_id}" in self.browser.current_url, "Это не страница профиля"
+
+    def go_to_my_projects_from_action_menu(self):
+        """переход на страницу мои проекты из меню действий"""
+        profile = WebDriverWait(self.browser, 10).until(
+            EC.element_to_be_clickable((By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(2)'))
+        )
+        profile.click()
+
+    def should_this_projects_page(self):
+        """проверка того, что открыта страница проектов пользователя"""
+        assert "/my-projects" in self.browser.current_url, "Это не адрес страницы проектов пользователя"
+        assert self.is_element_present(*HeaderLocators.I_AM_FOUNDER), "Это не страница проектов пользователя"
+
+

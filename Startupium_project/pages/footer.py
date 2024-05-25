@@ -1,14 +1,20 @@
 import time
 
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+
 from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.locators import FooterLocators
+from selenium.webdriver.support import expected_conditions as EC
 
 
 class Footer(BasePage):
 
     def go_to_footer(self):
-        feedback = self.browser.find_element(*FooterLocators.FEEDBACK)
-        self.browser.execute_script("arguments[0].scrollIntoView(true);", feedback)
+        self.browser.set_page_load_timeout(3)
+        self.browser.execute_script("window.scrollTo(0, document.body.scrollHeight)")
+        print(self.browser.current_url)
+        time.sleep(1)
 
     def go_to_feedback(self):
         feedback = self.browser.find_element(*FooterLocators.FEEDBACK)
@@ -52,8 +58,18 @@ class Footer(BasePage):
     def should_privacy_links(self):
         assert self.is_element_present(*FooterLocators.PRIVACY), "Сведений о политике конфиденциальности нет"
 
+    def press_policy(self):
+        WebDriverWait(self.browser, 10).until(
+            EC.element_to_be_clickable((By.XPATH, "//a[@href='/policy']"))
+        ).click()
 
+    def is_this_policy_page(self):
+        assert '/policy' in self.browser.current_url, "Это не адрес страницы политики конфиденциальности Startupium"
+        assert self.is_element_present(*FooterLocators.POLICY_STARTUPIUM_TITLE), ("Это не страница политики "
+                                                                                  "конфиденциальности Startupium")
 
-
-
-
+    def should_privacy_google_links_present(self):
+        assert self.is_element_present(*FooterLocators.PRIVACY_GOOGLE_LINK), ("Ссылка политики конфиденциальности "
+                                                                              "google отсутствует на странице")
+        assert self.is_element_present(*FooterLocators.TERMS_GOOGLE_LINK), ("Ссылка условий использования Google "
+                                                                            "отсутствует на странице")

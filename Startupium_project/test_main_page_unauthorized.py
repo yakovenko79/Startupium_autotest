@@ -76,6 +76,7 @@ class TestMainPage:
             header.is_this_main_page(LINK)
 
     def test_go_to_feedback_form_from_footer_unauth_347(self, browser):
+        """Проверка преехода на страницу отзывов с футера неавторизованным пользователем"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)
