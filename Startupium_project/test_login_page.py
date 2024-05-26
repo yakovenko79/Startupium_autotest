@@ -18,6 +18,7 @@ class TestLoginPage:
         self.page.open()
         self.page.go_to_login_page()
 
+    @pytest.mark.regression
     def test_login_using_valid_data(self, browser):
         """Тест авторизации в приложении Startupium"""
         login_page = LoginPage(browser, browser.current_url)
@@ -25,6 +26,3 @@ class TestLoginPage:
         login_page.input_login_credentials(EMAIL_USER, EMAIL_PASSWORD)
         head = Header(browser, browser.current_url)
         head.is_user_logged_in()
-
-
-

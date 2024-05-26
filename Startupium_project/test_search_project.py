@@ -1,3 +1,5 @@
+import pytest
+
 from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.search_project import SearchProject
 
@@ -11,6 +13,8 @@ ABOUT = 'This is about testing'
 HIRE = "I don't need a human"
 
 
+@pytest.mark.unauthorized
+@pytest.mark.regression
 class TestSearchProject:
     def test_search_project_unauthorized_user(self, browser):
         page = MainPage(browser, LINK)
@@ -22,6 +26,3 @@ class TestSearchProject:
         search_project.should_be_search_project_card(NAME)
         search_project.go_to_project_pressing_the_card(NAME)
         search_project.is_title_correct(NAME)
-
-
-

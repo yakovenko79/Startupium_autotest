@@ -1,6 +1,8 @@
 import time
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions
+from selenium.webdriver.support.wait import WebDriverWait
 
 from Startupium_project.pages.base_page import BasePage
 from Startupium_project.pages.locators import SearchProjectLocators
@@ -22,7 +24,7 @@ class SearchProject(BasePage):
 
     def should_be_search_project_url(self):
         """Проверка того, что это адрес страницы поиска проекта"""
-        time.sleep(1)
+        WebDriverWait(self.browser, 10).until(expected_conditions.visibility_of_element_located((By.XPATH, '//span[text()="Поиск проектов"]')))
         assert "projects" in self.browser.current_url, "you're not on search project page"
 
     def should_be_search_project_page(self):

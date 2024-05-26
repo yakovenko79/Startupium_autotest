@@ -1,7 +1,7 @@
 import time
 
 from Startupium_project.pages.base_page import BasePage
-from Startupium_project.pages.locators import ProfilePageLocators, MainPageLocators
+from Startupium_project.pages.locators import ProfilePageLocators
 
 
 class Profile(BasePage):

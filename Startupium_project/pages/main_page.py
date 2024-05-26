@@ -82,16 +82,12 @@ class MainPage(BasePage):
         response = requests.get(url)
         js = response.json()
         l = []
-        print(js)
         for i in range(len(js['data'])):
             fname = js['data'][i]['firstname']
             lname = js['data'][i]['lastname']
-            print('fname', type(fname))
-            print('lname', type(lname))
             name = (str(str(fname) if fname is not None else '') + " " + str(
                 str(lname) if lname is not None else "")).rstrip()
             l.append(name)
-        print("api names ", l)
         return l
 
     def check_profile_name_card_conforms_api_ui(self):
@@ -107,6 +103,11 @@ class MainPage(BasePage):
     def go_to_project_from_card(self):
         """Переход на страницу проекта с карточки проекта"""
         project_card = self.browser.find_element(By.XPATH, "//a[@href='/project/created-project-from-autotest']")
+        ActionChains(self.browser).move_to_element(project_card).click().perform()
+
+    def go_to_project_from_card_testtest(self):
+        """Переход на страницу проекта с карточки проекта"""
+        project_card = self.browser.find_element(By.XPATH, "//a[@href='/project/created-auto-project']")
         ActionChains(self.browser).move_to_element(project_card).click().perform()
 
     def go_to_project_from_card_and_compare(self):
@@ -137,5 +138,20 @@ class MainPage(BasePage):
                 time.sleep(2)
             else:
                 break
+
+    def should_increase_amount_profile_cards_after_press_see_else_btn(self):
+        """Проверка того, что при нажатии кнопки Смотреть еще количество карточек увеличивается"""
+        length = self.get_name_profile_card_from_ui()
+        if len(length) == 30 and self.is_element_present(*MainPageLocators.SEE_ELSE_BTN):
+            see_else_btn = self.browser.find_element(*MainPageLocators.SEE_ELSE_BTN)
+            see_else_btn.click()
+        else:
+            assert self.is_not_element_present(*MainPageLocators.SEE_ELSE_BTN), ("Карточек меньше или больше 30, "
+                                                                                 "кнопка Найти еще отсутствует")
+        new_length = self.get_name_profile_card_from_ui()
+        assert len(new_length) > 30, "Новые карточки не подгружаются"
+
+
+
 
 

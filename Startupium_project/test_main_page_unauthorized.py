@@ -9,7 +9,6 @@ from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.project_page import ProjectPage
 from Startupium_project.pages.search_project import SearchProject
 from Startupium_project.pages.search_user import SearchUser
-from Startupium_project.pages import login_page
 
 USER_EMAIL_AUTHORIZATION = "test@te.st"
 EMAIL_PASSWORD = "Test123!"
@@ -36,17 +35,15 @@ PAGES = ["/",
          f"/project-blog/{PROJECT_ID}/articles"]
 
 
+@pytest.mark.unauthorized
 @pytest.mark.regression
 class TestMainPage:
 
-    def test_find_project_page_redirect_329(self, browser, authorization):
+    def test_find_project_page_redirect_329(self, browser):
         """Проверка перехода на страницу поиска проектов при нажатии на кнопку 'Найти проект' обложки главной
         страницы для неавторизованного пользователя"""
         page = MainPage(browser, LINK)
         page.open()
-        login_page = LoginPage(browser, browser.current_url)
-        login_page.go_to_login_page()
-        authorization(self)
         search_page = SearchProject(browser, browser.current_url)
         search_page.go_to_find_project_page()
         search_page.should_be_search_project_url()
@@ -87,6 +84,8 @@ class TestMainPage:
             footer.should_feedback_form_appears()
 
     def test_go_to_projects_page_from_footer_unauth_344(self, browser):
+        """Проверка доступности страницы поиска проектов для неавторизованного пользователя через таб "Проекты" в
+        Footer"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)
@@ -98,6 +97,8 @@ class TestMainPage:
             projects.should_be_search_project_url()
 
     def test_go_to_search_user_from_footer_unauth_345(self, browser):
+        """Проверка доступности страницы поиска пользователей для неавторизованного пользователя через таб
+        "Пользователи" в Footer"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)
@@ -109,6 +110,8 @@ class TestMainPage:
             users.should_be_search_user_page_url()
 
     def test_go_to_articles_page_by_click_article_tab_from_header_unauthorized_333(self, browser):
+        """Проверка доступности страницы "Статьи" для неавторизованного пользователя через таб "Статьи"
+        горизонтального меню Header"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)
@@ -120,6 +123,8 @@ class TestMainPage:
             article_page.should_be_articles_page_url()
 
     def test_go_to_search_projects_page_by_click_projects_tab_from_header_unauthorized_331(self, browser):
+        """Проверка доступности страницы "Проекты" для неавторизованного пользователя через таб "Проекты"
+        горизонтального меню Header"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)
@@ -132,6 +137,8 @@ class TestMainPage:
             projects.should_be_search_project_page()
 
     def test_go_to_users_page_by_click_users_tab_from_header_unauthorized_332(self, browser):
+        """Проверка доступности страницы "Пользователи" для неавторизованного пользователя через таб "Пользователи"
+        горизонтального меню Header"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)
@@ -143,6 +150,8 @@ class TestMainPage:
             users.should_be_search_user_page_url()
 
     def test_go_to_about_page_by_click_about_tab_from_header_unauthorized_334(self, browser):
+        """Проверка доступности страницы "О сайте" для неавторизованного пользователя через таб "О сайте"
+        горизонтального меню Header"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)
@@ -154,6 +163,7 @@ class TestMainPage:
             about.should_be_about_page_url()
 
     def test_go_to_about_from_footer_unauth_346(self, browser):
+        """Проверка доступности страницы "О сайте" для неавторизованного пользователя через таб "О сайте" в Footer"""
         for endpoint in PAGES:
             address = f'{LINK}{endpoint}'
             page = MainPage(browser, address)
@@ -165,11 +175,15 @@ class TestMainPage:
             about.should_be_about_page_url()
 
     def test_description_conforms_requirements_unauth_338(self, browser):
+        """Для неавторизованного пользователя: проверка соответствия описания приложения на обложке главной страницы
+        приложения требованиям"""
         page = MainPage(browser, LINK)
         page.open()
         page.description_conforms_requirements()
 
     def test_title_conforms_requirements_unauth_337(self, browser):
+        """Для неавторизованного пользователя: проверка соответствия заголовка обложки главной страницы приложения
+        требованиям"""
         page = MainPage(browser, LINK)
         page.open()
         page.title_conforms_requirements()

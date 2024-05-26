@@ -17,6 +17,7 @@ ABOUT = 'This is about testing'
 HIRE = "I don't need a human"
 
 
+@pytest.mark.regression
 class TestCreateNewProject:
     @pytest.fixture(scope='function', autouse=True)
     def setup(self, browser):
@@ -47,11 +48,3 @@ class TestCreateNewProject:
         project_page.is_name_of_project_correct(NAME)
         page.open()
         project_page.is_name_of_project_present_on_main_page(NAME)
-
-
-
-
-
-
-
-

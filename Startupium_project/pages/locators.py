@@ -86,6 +86,8 @@ class SearchProjectLocators():
 
 
 class HeaderLocators:
+    AVATAR_ICON = None
+    FAVORITES_MAIN_TITLE = (By.XPATH, '//h2[text()="Избранное"]')
     I_AM_FOUNDER = (By.XPATH, '//h2[text()="Я основатель"]')
     PROFILE_ACTION_MENU_BTN = (By.CSS_SELECTOR, 'header div:nth-child(4) div li:nth-child(1)')
     DRAFT_HEADER = (By.XPATH, '//h2[text()="Черновики"]')
