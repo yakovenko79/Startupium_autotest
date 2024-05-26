@@ -10,6 +10,7 @@ EMAIL_PASSWORD = "Test123!"
 link = "https://test.startupium.ru"
 
 
+@pytest.mark.regression
 class TestLoginPage:
 
     @pytest.fixture(scope="function", autouse=True)
@@ -18,7 +19,6 @@ class TestLoginPage:
         self.page.open()
         self.page.go_to_login_page()
 
-    @pytest.mark.regression
     def test_login_using_valid_data(self, browser):
         """Тест авторизации в приложении Startupium"""
         login_page = LoginPage(browser, browser.current_url)
