@@ -6,20 +6,20 @@
 <h3>В пакете Startupium_project лежат:</h3>
 - <b>conftest</b> - это хранилище фикстур, пока здесь лежат запуск драйвера и остановка. Также выбор браузера (Chrome или Firefox). По умолчанию хром.<br>
 - папка <b>pages</b> тут лежат файлы страниц (<b>Page Object</b> рекомендует =))<br>
-   <i>articles_page.py</i> - страница статей<br>
-   <i>about_page.py</i> - страница "О сайте"<br>
-   <i>search_user.py</i> - страница поиска пользователей<br>
-   <i>base_page.py</i> - базовый класс<br>
-   <i>login_page.py</i> - страница логина<br>
-   <i>main_page.py</i> - главная страница<br>
-   <i>search_project.py</i> - страница поиска проектов<br>
-   <i>footer.py</i> - футер<br>
-   <i>header.py</i> -  хедер<br>
-   <i>locators.py</i> - селекторы<br>
-   <i>profile_page.py</i> - страница профиля<br>
-   <i>project_page.py</i> - страница создания проекта<br>
-   <i>search_user.py</i> - страница поиска пользователей<br>
-   <i>registration_page.py</i> - страница ввода регистрационых данных (не реализовано, т.к есть в рабочем проекте)<br>
+   - <i>articles_page.py</i> - страница статей<br>
+   - <i>about_page.py</i> - страница "О сайте"<br>
+   - <i>search_user.py</i> - страница поиска пользователей<br>
+   - <i>base_page.py</i> - базовый класс<br>
+   - <i>login_page.py</i> - страница логина<br>
+   - <i>main_page.py</i> - главная страница<br>
+   - <i>search_project.py</i> - страница поиска проектов<br>
+   - <i>footer.py</i> - футер<br>
+   - <i>header.py</i> -  хедер<br>
+   - <i>locators.py</i> - селекторы<br>
+   - <i>profile_page.py</i> - страница профиля<br>
+   - <i>project_page.py</i> - страница создания проекта<br>
+   - <i>search_user.py</i> - страница поиска пользователей<br>
+   - <i>registration_page.py</i> - страница ввода регистрационых данных (не реализовано, т.к есть в рабочем проекте)<br>
 - <b>test_login_page.py</b> - тестирование возможности логина с валидными данными<br>
 - <b>test_create_new_project.py**:</b>
     - test_create_new_project_into_draft - тестирование возможности создания черновика проекта используя валидные данные<br>
