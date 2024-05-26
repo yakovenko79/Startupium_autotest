@@ -6,7 +6,7 @@
 <h3>В пакете Startupium_project лежат:</h3>
 - <b>conftest</b> - это хранилище фикстур, пока здесь лежат запуск драйвера и остановка. Также выбор браузера (Chrome или Firefox). По умолчанию хром.<br>
 - папка <b>pages</b> тут лежат файлы страниц (<b>Page Object</b> рекомендует =))<br>
-   <p>- <i>articles_page.py</i> - страница статей<br>
+   <p>- <i>articles_page.py</i> - страница статей<br></p>
    - <i>about_page.py</i> - страница "О сайте"<br>
    - <i>search_user.py</i> - страница поиска пользователей<br>
    - <i>base_page.py</i> - базовый класс<br>
