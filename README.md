@@ -24,7 +24,7 @@
 </ul>
 - <b>test_login_page.py</b> - тестирование возможности логина с валидными данными<br>
 
-- <b>test_create_new_project.py:</b>
+- <b>test_create_new_project.py</b> - тестирование возможности создания нового проекта<br>
 <ul>
 <li> test_create_new_project_into_draft - тестирование возможности создания черновика проекта используя валидные данные<br></li>
 <li> test_create_and_publish_new_project - тестирование возможности создания и публикации проекта используя валидные данные<br></li>
