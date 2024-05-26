@@ -10,32 +10,34 @@
 <li> <i>articles_page.py</i> - страница статей<br></li>
 <li> <i>about_page.py</i> - страница "О сайте"<br></li>
 <li> <i>search_user.py</i> - страница поиска пользователей<br></li>
+<li> <i>base_page.py</i> - базовый класс<br></li>
+<li> <i>login_page.py</i> - страница логина<br></li>
+<li> <i>main_page.py</i> - главная страница<br></li>
+<li> <i>search_project.py</i> - страница поиска проектов<br></li>
+<li> <i>footer.py</i> - футер<br></li>
+<li> <i>header.py</i> -  хедер<br></li>
+<li> <i>locators.py</i> - селекторы<br></li>
+<li> <i>profile_page.py</i> - страница профиля<br></li>
+<li> <i>project_page.py</i> - страница создания проекта<br></li>
+<li> <i>search_user.py</i> - страница поиска пользователей<br></li>
+<li> <i>registration_page.py</i> - страница ввода регистрационых данных (не реализовано, т.к есть в рабочем проекте)<br></li>
 </ul>
-  * <i>base_page.py</i> - базовый класс<br>
-  * <i>login_page.py</i> - страница логина<br>
-  * <i>main_page.py</i> - главная страница<br>
-  * <i>search_project.py</i> - страница поиска проектов<br>
-  * <i>footer.py</i> - футер<br>
-  * <i>header.py</i> -  хедер<br>
-  * <i>locators.py</i> - селекторы<br>
-  * <i>profile_page.py</i> - страница профиля<br>
-  * <i>project_page.py</i> - страница создания проекта<br>
-  * <i>search_user.py</i> - страница поиска пользователей<br>
-  * <i>registration_page.py</i> - страница ввода регистрационых данных (не реализовано, т.к есть в рабочем проекте)<br>
 - <b>test_login_page.py</b> - тестирование возможности логина с валидными данными<br>
 - <b>test_create_new_project.py**:</b>
-    - test_create_new_project_into_draft - тестирование возможности создания черновика проекта используя валидные данные<br>
-    - test_create_and_publish_new_project - тестирование возможности создания и публикации проекта используя валидные данные<br>
+<ul>
+<li> test_create_new_project_into_draft - тестирование возможности создания черновика проекта используя валидные данные<br></li>
+<li> test_create_and_publish_new_project - тестирование возможности создания и публикации проекта используя валидные данные<br></li>
+</ul>
 - <b>test_main_page_unauthorized.py</b> - тестирование главной страницы из тест-сьюта регрессионного тестирования пользователь неавторизован<br>
 - <b>test_main_page_authorized.py</b>- тестирование главной страницы из тест-сьюта регрессионного тестирования пользователь авторизован<br>
 - <b>test_search_project.py</b> - тестирование возможности поиска проекта<br>
-    - test_search_project_unauthorized_user - тестирование возможности поиска проекта неавторизованным пользователем<br>
+<li> test_search_project_unauthorized_user - тестирование возможности поиска проекта неавторизованным пользователем<br></li>
 - <b>requirements.txt</b> - зависимости<br>
-- <b>pytest.ini</b> - маркировка тестов<br>
-    - <i>regression</i> - регрессионные тесты, можно использовать для запуска всех тестов<br>
-    - <i>authorized</i> - тесты для авторизованного пользователя<br>
-    - <i>unauthorized</i> - тесты для неавторизованного пользователя<br>
-  
+<ul> <b>pytest.ini</b> - маркировка тестов<br>
+<li> <i>regression</i> - регрессионные тесты, можно использовать для запуска всех тестов<br></li>
+<li> <i>authorized</i> - тесты для авторизованного пользователя<br></li>
+<li> <i>unauthorized</i> - тесты для неавторизованного пользователя<br></li>
+</ul>
 ---
 
 Для запуска группы тестов исходя из маркировки рекомендуется использовать запуск из командной строки<br>
