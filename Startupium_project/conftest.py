@@ -2,7 +2,6 @@ import pytest
 
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
-from Startupium_project.pages.locators import LoginPageLocators
 
 
 def pytest_addoption(parser):

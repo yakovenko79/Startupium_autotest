@@ -11,11 +11,11 @@ from Startupium_project.pages.project_page import ProjectPage
 from Startupium_project.pages.search_project import SearchProject
 from Startupium_project.pages.search_user import SearchUser
 
-EMAIL_USER = "test@te.st"
-EMAIL_PASSWORD = "Test123!"
-EMAIL_USER_2 = "example@ex.le"
+EMAIL_USER = ""
+EMAIL_PASSWORD = ""
+EMAIL_USER_2 = ""
 
-link = "https://test.startupium.ru"
+link = "https://{domain}.startupium.ru"
 
 SLUG = "new-project"
 PROJECT_ARTICLE_SLUG = "new-new-project-blog"
@@ -382,17 +382,3 @@ class TestMainPageAuth:
         main.press_text_btn_profiles()
         main.should_only_profile_cards_ui()
         main.should_increase_amount_profile_cards_after_press_see_else_btn()
-
-
-
-
-
-
-
-
-
-
-
-
-
-

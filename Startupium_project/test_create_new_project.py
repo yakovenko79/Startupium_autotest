@@ -7,9 +7,9 @@ from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.login_page import LoginPage
 from Startupium_project.pages.project_page import ProjectPage
 
-LINK = "https://test.startupium.ru"
-EMAIL_USER = "test@te.st"
-EMAIL_PASSWORD = "Test123!"
+LINK = "https://{domain}.startupium.ru"
+EMAIL_USER = ""
+EMAIL_PASSWORD = ""
 NAME = f'Created project from autotest{random.randint(42, 100)}'
 DESCRIPTION = 'This is a autotest project'
 TAG = 'test-project'

@@ -4,10 +4,10 @@ from Startupium_project.pages.header import Header
 from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.login_page import LoginPage
 
-EMAIL_USER = "test@te.st"
-EMAIL_PASSWORD = "Test123!"
+EMAIL_USER = ""
+EMAIL_PASSWORD = ""
 
-link = "https://test.startupium.ru"
+link = "https://{domain}.startupium.ru"
 
 
 @pytest.mark.regression

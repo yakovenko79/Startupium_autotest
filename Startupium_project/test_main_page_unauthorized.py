@@ -10,10 +10,10 @@ from Startupium_project.pages.project_page import ProjectPage
 from Startupium_project.pages.search_project import SearchProject
 from Startupium_project.pages.search_user import SearchUser
 
-USER_EMAIL_AUTHORIZATION = "test@te.st"
-EMAIL_PASSWORD = "Test123!"
-LINK = "https://test.startupium.ru"
-GET_URL = "https://test.startupium.ru/api/users"
+USER_EMAIL_AUTHORIZATION = ""
+EMAIL_PASSWORD = ""
+LINK = "https://{domain}.startupium.ru"
+GET_URL = "https://{domain}.startupium.ru/api/users"
 ID_PROJECT = "71"
 SLUG = "new-project"
 ARTICLE_SLUG = "new-project-blog-article"

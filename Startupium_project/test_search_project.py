@@ -3,9 +3,9 @@ import pytest
 from Startupium_project.pages.main_page import MainPage
 from Startupium_project.pages.search_project import SearchProject
 
-LINK = "https://test.startupium.ru"
-EMAIL_USER = "test@te.st"
-EMAIL_PASSWORD = "Test123!"
+LINK = "https://{domain}.startupium.ru"
+EMAIL_USER = ""
+EMAIL_PASSWORD = ""
 NAME = 'Created from autotest'
 DESCRIPTION = 'This is a autotest project'
 TAG = 'test-project'
