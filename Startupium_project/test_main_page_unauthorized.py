@@ -38,7 +38,7 @@ PAGES = ["/",
 @pytest.mark.unauthorized
 @pytest.mark.regression
 class TestMainPage:
-
+    @pytest.mark.github_actions
     def test_find_project_page_redirect_329(self, browser):
         """Проверка перехода на страницу поиска проектов при нажатии на кнопку 'Найти проект' обложки главной
         страницы для неавторизованного пользователя"""
@@ -49,6 +49,7 @@ class TestMainPage:
         search_page.should_be_search_project_url()
         search_page.should_be_search_project_page()
 
+    @pytest.mark.github_actions
     def test_redirect_to_login_page_after_press_create_crew_btn_339(self, browser):
         """Проверка перехода на страницу авторизации при нажатии на кнопку 'Собрать команду' обложки главной страницы
         для неавторизованного пользователя"""
