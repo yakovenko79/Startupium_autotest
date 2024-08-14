@@ -19,4 +19,4 @@
         - name: Install dependencies
           run: pip install -r requirements.txt
         - name: run-tests
-          run: pytest -s -v -m github_actions test_main_page_unauthorized.py
+          run: pytest -s -v -m github_actions
