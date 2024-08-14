@@ -29,8 +29,8 @@
         - name: Install dependencies
           run: pip install -r requirements.txt
         - name: first_test
-          if: "github.event.inputs.target == 'first_test'"
+          if: "github.event.inputs.deployment_target == 'first_test'"
           run: pytest -m github_actions
         - name: second_test
-          if: "github.event.inputs.target == 'second_test'"
+          if: "github.event.inputs.deployment_target == 'second_test'"
           run: pytest -m github_actions_1
