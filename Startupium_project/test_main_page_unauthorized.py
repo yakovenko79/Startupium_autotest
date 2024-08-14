@@ -12,8 +12,8 @@ from Startupium_project.pages.search_user import SearchUser
 
 USER_EMAIL_AUTHORIZATION = ""
 EMAIL_PASSWORD = ""
-LINK = "https://{domain}.startupium.ru"
-GET_URL = "https://{domain}.startupium.ru/api/users"
+LINK = "https://test.startupium.ru"
+GET_URL = "https://test.startupium.ru/api/users"
 ID_PROJECT = "71"
 SLUG = "new-project"
 ARTICLE_SLUG = "new-project-blog-article"

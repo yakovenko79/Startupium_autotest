@@ -1,7 +1,8 @@
 import pytest
 
-from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
+from selenium import webdriver
+import chromedriver_autoinstaller
 
 
 def pytest_addoption(parser):
@@ -11,10 +12,12 @@ def pytest_addoption(parser):
 
 @pytest.fixture(scope="function", autouse=True)
 def browser(request):
+    chromedriver_autoinstaller.install()
     browser_name = request.config.getoption("browser_name")
     if browser_name == "chrome":
         options = Options()
         options.add_argument('--start-maximized')
+        options.add_argument('--headless')
         print("\nstart chrome browser for test..")
         browser = webdriver.Chrome(options=options)
     elif browser_name == "firefox":
