@@ -1,11 +1,21 @@
   name: Automated tests
 
   on:
-    push
+    workflow_dispatch:
+      inputs:
+        deployment_target:
+          description: Choose target
+          required: true
+          default:
+            type: choice
+            options:
+              - first_test
+              - second_test
+
 
   jobs:
     test:
-      runs-on: ubuntu - latest
+      runs-on: ubuntu-latest
 
       steps:
         - name: Checkout repository
@@ -18,5 +28,9 @@
           run: sudo apt-get install google-chrome-stable
         - name: Install dependencies
           run: pip install -r requirements.txt
-        - name: run-tests
-          run: pytest -s -v -m github_actions
+        - name: first_test
+          if: "github.event.inputs.target == 'first_test'"
+          run: pytest -m github_actions
+        - name: second_test
+          if: "github.event.inputs.target == 'second_test'"
+          run: pytest -m github_actions_1

@@ -182,6 +182,7 @@ class TestMainPage:
         page.open()
         page.description_conforms_requirements()
 
+    @pytest.mark.github_actions_1
     def test_title_conforms_requirements_unauth_337(self, browser):
         """Для неавторизованного пользователя: проверка соответствия заголовка обложки главной страницы приложения
         требованиям"""
